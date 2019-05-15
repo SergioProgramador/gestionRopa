@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" class="mat-toolbar mat-primary">
+  <div class="sidenav-container">
+    <ul class="navbar-url">
+        <li class="margin-navbar">    
+          <a routerLink="">Inicio</a>
+        </li>
+        <li class="margin-navbar">    
+          <a routerLink="">Productos</a>
+        </li>
+        <li class="margin-navbar">    
+          <a routerLink="">Facturas</a>
+        </li>          
+        <button mat-button [matMenuTriggerFor]="menu" class="margin-navbar">Administración</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <a routerLink="/categorias/showcategorias">Categorias</a>
+          </button>
+        </mat-menu>
+        <li class="margin-navbar">
+          <i class="material-icons">
+            account_circle
+          </i> Iniciar sesión
+        </li>
+    </ul>    
+  </div>
+</mat-toolbar>
+
+

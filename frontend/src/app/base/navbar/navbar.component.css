@@ -1,0 +1,32 @@
+.sidenav-container {
+  margin-left: 20%;
+  margin-top: 2.5 cm;  
+}
+
+.sidenav {
+  width: 200px;
+  display: none;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 0 0.5em black;
+}
+
+.margin-navbar {
+  margin-right: 20%;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.navbar-url li{
+  list-style-type: none;
+  display: inline-block;
+}
