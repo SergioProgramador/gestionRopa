@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 //Componentes
 import { BaseModule } from './base/base.module';
 import { CategoriasModule } from './categorias/categorias.module';
+import { AddCategoriaComponent } from './categorias/list-categorias/list-categorias.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CategoriasModule } from './categorias/categorias.module';
   providers: [
    
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddCategoriaComponent],
 })
 export class AppModule { }

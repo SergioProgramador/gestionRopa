@@ -1,47 +1,36 @@
-<!-- <div class="container-fluid">
-    <div class="container xd-container">
-      <h2>Categorias</h2>
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th>NOMBRE</th>
-          </tr>
-          </thead>
-  
-          <tbody>
-            <tr *ngFor="let categoria of categorias">
-              <td>{{categoria.id}}</td>
-              <td>{{categoria.nombre}}</td>
-            </tr>
-          </tbody>
-        </table>
-        <div>
-          <button class="btn btn-default">Añadir Categoria</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <div class="container">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-          <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-        
-          <!-- Id Column -->
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef> ID </th>
-            <td mat-cell *matCellDef="let categoria"> {{categoria.id}} </td>
-          </ng-container>
-        
-          <!-- Nombre Column -->
-          <ng-container matColumnDef="nombre">
-            <th mat-header-cell *matHeaderCellDef> Nombre </th>
-            <td mat-cell *matCellDef="let categoria"> {{categoria.nombre}} </td>
-          </ng-container>
-        
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
+<div class="container">
+  <div class="example-button">
+    <button mat-stroked-button color="primary" (click)="addCategoria()">
+        <mat-icon class="material-icons">add</mat-icon>
+        <span>Agregar Categoria</span>
+    </button>  
   </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let categoria"> {{categoria.id}} </td>
+      </ng-container>
+    
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> NOMBRE </th>
+        <td mat-cell *matCellDef="let categoria"> {{categoria.nombre}} </td>
+      </ng-container>
+
+      <!-- Icono Column -->
+      <ng-container matColumnDef="icono">
+        <th mat-header-cell *matHeaderCellDef> ACCIÓN </th>
+        <td mat-cell *matCellDef="let categoria">
+          <i class="material-icons" style="margin-right: 4%">edit</i>
+          <i class="material-icons" style="color: red">delete_outline</i>             
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
 
