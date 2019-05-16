@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListCategoriasComponent, AddCategoriaComponent } from './list-categorias/list-categorias.component';
+import { ListCategoriasComponent } from './list-categorias/list-categorias.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule } from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AddCategoriaComponent } from './add-categoria/add-categoria.component';
+import { FormsModule }   from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatInputModule,
     MatDialogModule,
+    FormsModule
     
   ],
   exports:[
@@ -34,8 +37,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
 
-  ]
+  ],
+  entryComponents: [AddCategoriaComponent], 
+  
 })
 export class CategoriasModule { }

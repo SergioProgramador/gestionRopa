@@ -5,7 +5,7 @@ import { Categoria } from '../categoria';
 import { Observable } from 'rxjs';
 import { DataSource } from '@angular/cdk/table';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { AddCategoriaComponent } from '../add-categoria/add-categoria.component';
 //import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 @Component({
@@ -31,35 +31,22 @@ export class ListCategoriasComponent implements OnInit {
 
   }
 
-  addCategoria(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose=true;
-    dialogConfig.autoFocus=true;
-    dialogConfig.width="60%";
-    this.dialog.open(AddCategoriaComponent,
-      data:{
-        nombre:any;
-      });
-    } 
-  }
+  addCategoria(): void{
+    let dialogRef = this.dialog.open(AddCategoriaComponent, {
+      
+    });
 
-
-
-@Component({
-  selector: 'add-categoria-component',
-  templateUrl: './add-categoria.component.html',
-})
-export class AddCategoriaComponent {
-
-  constructor(
-    public dialogRef: MatDialogRef<AddCategoriaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Categoria) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Pop-up se ha cerrado.');
+      console.log(result);
+    });
   }
 
 }
+
+
+
+
 
 export class categoriasDataSource extends DataSource<any>{
 

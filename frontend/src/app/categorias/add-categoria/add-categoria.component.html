@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Añadir Categoría</h1>
+
+<form (ngSubmit)="onSubmit(categoriaForm.value)" #categoriaForm="ngForm" class="form-horizontal">
+
+    <div class="form-group" hidden="true">
+      <input type="text" hidden="true" class="form-control" id="id" [(ngModel)]="categoria.id" name="id"/>
+    </div>
+
+    <div class="form-group">
+        Nombre: <input type="text" class="form-control" id="nombre" [(ngModel)]="categoria.nombre"  name="nombre" #nombre="ngModel"/>
+    </div>
+
+    <button class="btn btn-default" type="submit">Añadir Categoria</button>
+</form>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+</div>

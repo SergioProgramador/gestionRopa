@@ -13,6 +13,7 @@ export class CategoriasService {
 
   private handlerError: HandleError;
   url_list_categorias = "http://localhost:8080/categorias/showcategorias";
+  url_add_categoria = "http://localhost:8080/categorias/add";
 
   constructor(private http: HttpClient, private httpErrorHandler: ErrorService) { 
     this.handlerError = httpErrorHandler.createHandleError('CategoriasService');
@@ -24,6 +25,14 @@ export class CategoriasService {
       .pipe(
         catchError(this.handlerError('getCategorias', []))
         
+      );
+  }
+
+  //GUARDA UNA CATEGORIA
+  addCategoria(categoria: Categoria): Observable<Categoria> {
+    return this.http.post<Categoria>(this.url_add_categoria, categoria)
+      .pipe(
+        catchError(this.handlerError('addCategoria', categoria))
       );
   }
   
