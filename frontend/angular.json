@@ -90,7 +90,9 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/js/function.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

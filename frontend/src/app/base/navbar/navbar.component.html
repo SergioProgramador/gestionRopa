@@ -1,8 +1,10 @@
-<mat-toolbar color="primary" class="mat-toolbar mat-primary">
-  <div class="sidenav-container">
+<!-- <mat-toolbar color="primary" class="mat-toolbar mat-primary">
+  <div class="container">
     <ul class="navbar-url">
         <li class="margin-navbar">    
-          <a routerLink="">Inicio</a>
+          <a routerLink="/home" aria-disabled="false">
+            <span class="mat-button-wrapper">Inicio</span>
+          </a>
         </li>
         <li class="margin-navbar">    
           <a routerLink="">Productos</a>
@@ -10,11 +12,27 @@
         <li class="margin-navbar">    
           <a routerLink="">Facturas</a>
         </li>          
-        <button mat-button [matMenuTriggerFor]="menu" class="margin-navbar">Administración</button>
+        <button mat-button [matMenuTriggerFor]="menu" class="margin-navbar">Administración 
+          <mat-icon class="material-icons">
+            arrow_drop_down
+          </mat-icon>
+        </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
-            <a routerLink="/categorias/showcategorias">Categorias</a>
+            <a class="a2" routerLink="/categorias/showcategorias">Categorias</a>
           </button>
+
+          <button mat-menu-item>
+            <a class="a2" routerLink="/proveedores/showproveedores">Proveedores</a>
+          </button>
+
+          <button mat-menu-item>
+            <a class="a2" routerLink="/categorias/showcategorias">Empleados</a>
+          </button>
+
+          <button mat-menu-item>
+              <a class="a2" routerLink="/categorias/showcategorias">Etiquetas</a>
+            </button>
         </mat-menu>
         <li class="margin-navbar">
           <i class="material-icons">
@@ -23,6 +41,26 @@
         </li>
     </ul>    
   </div>
-</mat-toolbar>
+</mat-toolbar> -->
+
+<div class="col-md-3">
+  <a routerLink="/categorias/showcategorias" aria-disabled="false">
+    <span class="mat-button">Categorias</span>
+  </a>
+
+  <a routerLink="/proveedores/showproveedores" aria-disabled="false">
+    <span class="mat-button">Proveedores</span>
+  </a>
+
+  <a routerLink="/proveedores/showproveedores" aria-disabled="false">
+    <span>Mi cuenta</span>
+  </a>
+
+</div>
+
+<div class="col-md-9">
+
+
+</div>
 
 

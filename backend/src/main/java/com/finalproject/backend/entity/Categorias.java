@@ -1,5 +1,7 @@
 package com.finalproject.backend.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,15 +11,25 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "categorias")
-public class Categorias {
+public class Categorias implements Serializable{
+	
+
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	@Column(name="nombre")
+	@Column(name="nombre", nullable=false)
 	private String nombre;
 	
+	
+	//METODO TO STRING
+	@Override
+	public String toString() {
+		return "Categorias [id=" + id + ", nombre=" + nombre + "]";
+	}
+
 	//CONSTRUCTOR
 	public Categorias(int id, String nombre) {
 		super();

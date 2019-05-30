@@ -1,36 +1,35 @@
-<div class="container">
-  <div class="example-button">
-    <button mat-stroked-button color="primary" (click)="addCategoria()">
-        <mat-icon class="material-icons">add</mat-icon>
-        <span>Agregar Categoria</span>
-    </button>  
-  </div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> 
-      <!-- Id Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let categoria"> {{categoria.id}} </td>
-      </ng-container>
-    
-      <!-- Nombre Column -->
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef> NOMBRE </th>
-        <td mat-cell *matCellDef="let categoria"> {{categoria.nombre}} </td>
-      </ng-container>
-
-      <!-- Icono Column -->
-      <ng-container matColumnDef="icono">
-        <th mat-header-cell *matHeaderCellDef> ACCIÓN </th>
-        <td mat-cell *matCellDef="let categoria">
-          <i class="material-icons" style="margin-right: 4%">edit</i>
-          <i class="material-icons" style="color: red">delete_outline</i>             
-        </td>
-      </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+<app-add-categoria></app-add-categoria>
+<app-edit-categoria *ngIf="categoriaSeleccionada" [categoria] = "categoriaSeleccionada"></app-edit-categoria>
+<div class="row">
+    <h2 class="titulo">Listado de Categorías</h2>
 </div>
+<div class="bloque1">  
+    <button type="button" class="btn btn-outline-info btn-sm agregar" data-toggle="modal" data-target="#modalAgregar">Agregar</button>  
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cat of categorias">
+        <td>{{cat.nombre}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-info btn1" (click)="abrirModal(cat)" data-toggle="modal" data-target="#modalEditar">
+            <a>
+                <i class="material-icons" style="margin-right: 4%">edit</i>
+            </a>
+          </button>          
+          <button type="button" class="btn btn-outline-info btn2" >
+            <a (click)="delete(cat)">
+                <i class="material-icons">delete_outline</i>           
+            </a>
+          </button>          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 

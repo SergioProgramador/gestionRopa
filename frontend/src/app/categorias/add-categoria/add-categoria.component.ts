@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import swal from 'sweetalert2';
 import { Categoria } from '../categoria';
 import { CategoriasService } from '../categorias.service';
-import { Router } from '@angular/router';
+import { ModalService } from 'src/app/modal.service';
 
 @Component({
   selector: 'app-add-categoria',
@@ -11,31 +12,27 @@ import { Router } from '@angular/router';
 })
 export class AddCategoriaComponent implements OnInit {
 
-  categoria: Categoria;
-  errorMessage: string;
+  public categoria: Categoria;
 
-  constructor(public dialogRef: MatDialogRef<AddCategoriaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private service: CategoriasService, private router: Router) { 
+  constructor(private router: Router, private service: CategoriasService, private modalService: ModalService) { 
       this.categoria = <Categoria>{};
     }
 
   ngOnInit() {
   }
 
-  onSubmit(categoria: Categoria) {
-    this.dialogRef.close("Fue guardado.");
-    categoria.id = null;
-    this.service.addCategoria(categoria).subscribe(
-      new_categoria => {
-        this.categoria = new_categoria;
-        this.gotoCategoriasList();
-      },
-      error => this.errorMessage = <any>error
+  public create(): void {
+    console.log("Ha enviado el formulario.")
+    console.log(this.categoria)
+    this.service.addCategoria(this.categoria).subscribe(
+      response => {
+        this.modalService.notificarUpload.emit(this.categoria),
+        this.modalService.closeModal(),
+        swal.fire('Nueva Categoría', `Categoría ${this.categoria.nombre} añadida correctamente!`, 'success')
+      }      
     );
   }
 
-  gotoCategoriasList() {
-    this.router.navigate(['/categorias/showcategorias']);
-  }
+  
 
 }

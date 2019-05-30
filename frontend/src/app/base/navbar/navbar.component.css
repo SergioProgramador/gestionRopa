@@ -1,36 +1,49 @@
-.sidenav-container {
-  margin-left: 20%;
-  margin-top: 2.5 cm;  
-}
-
-.sidenav {
-  width: 200px;
-  display: none;
-}
-
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
-  z-index: 1;
+  left: 0;
+  right: 0;
+  z-index: 2;
   box-shadow: 0 0 0.5em black;
 }
 
 .margin-navbar {
-  margin-right: 20%;
+  margin-right: 12%;
+  margin-top: 1%;
   font-family: Roboto,"Helvetica Neue",sans-serif;
   font-size: 16px;
   font-weight: 500;
+  display: inline-block;
+  
 }
 
 .navbar-url li{
-  list-style-type: none;
   display: inline-block;
 }
 
 .nav-caption{
   display: inline-block;
 }
+
+.mat-button{
+  user-select: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #1997c6;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.a2{
+  color: black;
+}
+
+i{
+  vertical-align: middle;
+}
+

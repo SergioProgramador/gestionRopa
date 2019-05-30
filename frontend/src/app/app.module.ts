@@ -4,10 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-//Componentes
+//Modulos
 import { BaseModule } from './base/base.module';
 import { CategoriasModule } from './categorias/categorias.module';
-
+import { ProveedoresModule } from './proveedores/proveedores.module';
+import { ClientesModule } from './clientes/clientes.module';
+import { ProductosModule } from './productos/productos.module';
+import { FacturasModule } from './facturas/facturas.module';
+import { LineasFacturasModule } from './lineas-facturas/lineas-facturas.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,12 @@ import { CategoriasModule } from './categorias/categorias.module';
     BrowserModule,
     AppRoutingModule,
     BaseModule,
-    CategoriasModule
+    CategoriasModule,
+    ProveedoresModule,
+    ClientesModule,
+    ProductosModule,
+    FacturasModule,
+    LineasFacturasModule
   ],
   providers: [
    

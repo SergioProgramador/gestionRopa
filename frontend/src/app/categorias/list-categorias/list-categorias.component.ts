@@ -1,12 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriasService } from '../categorias.service';
 import { Categoria } from '../categoria';
-import { Observable } from 'rxjs';
-import { DataSource } from '@angular/cdk/table';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material';
-import { AddCategoriaComponent } from '../add-categoria/add-categoria.component';
-//import {MatPaginator, MatTableDataSource} from '@angular/material';
+import swal from 'sweetalert2';
+import { ModalService } from 'src/app/modal.service';
+
 
 @Component({
   selector: 'app-list-categorias',
@@ -18,48 +16,56 @@ export class ListCategoriasComponent implements OnInit {
   errorMessage: string;
   categorias: Categoria[];
 
-  displayedColumns: string[] = ['id', 'nombre', 'icono'];
-  dataSource = new categoriasDataSource(this.service);
-
-  //@ViewChild(MatPaginator) paginator: MatPaginator;
+  categoriaSeleccionada:Categoria;
 
   nombre:string;
 
-  constructor(private router: Router, private service: CategoriasService, public dialog: MatDialog) { }
+  constructor(private router: Router, private service: CategoriasService, private modalService: ModalService) { }
 
   ngOnInit() {
-
+    this.service.getCategorias().subscribe(
+      categorias => {
+        this.categorias = categorias;
+      });
   }
 
-  addCategoria(): void{
-    let dialogRef = this.dialog.open(AddCategoriaComponent, {
-      
-    });
+  delete(categoria: Categoria): void{
+    swal.fire({
+      title: '¿Estás seguro?',
+      text: `¿Seguro que desea eliminar la categoría ${categoria.nombre}?`,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar!',
+      cancelButtonText: "Cancelar",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        this.service.removeCategoria(categoria.id).subscribe(
+          response => {
+            this.categorias = this.categorias.filter(cat => cat !== categoria)
+            swal.fire(
+              'Categoria eliminada!',
+              `Categoria ${categoria.nombre} eliminada con éxito`,
+              'success'
+            )
+          }
+        );
+        swal.fire(  
+          'Eliminada!',
+          'La categoría ha sido eliminada',
+          'success'
+        )
+      }
+    })
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Pop-up se ha cerrado.');
-      console.log(result);
-    });
+  abrirModal(categoria: Categoria){
+    this.categoriaSeleccionada = categoria;
+    this.modalService.openModal();
   }
 
 }
-
-
-
-
-
-export class categoriasDataSource extends DataSource<any>{
-
-  constructor(private service: CategoriasService){
-    super();
-  }
   
-  connect():Observable<Categoria[]>{
-    return this.service.getCategorias();
-  }
 
-  disconnect(){
-
-  }
-  
-}

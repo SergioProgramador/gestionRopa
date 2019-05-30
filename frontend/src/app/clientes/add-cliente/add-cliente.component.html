@@ -1,0 +1,61 @@
+<div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Cliente</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="create()">
+              <div class="form-group" hidden="true">
+                <input type="text" hidden="true" class="form-control" id="id" [(ngModel)]="cliente.id" name="id"/>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                    Nombre: <input type="text" class="form-control" id="nombre" [(ngModel)]="cliente.nombre" name="nombre" #nombre="ngModel"/>
+                </div>
+                <div class="form-group col-md-6">
+                    Apellidos: <input type="text" class="form-control" id="apellidos" [(ngModel)]="cliente.apellidos" name="apellidos" #apellidos="ngModel"/>
+                </div>
+              </div>   
+              <div class="row">
+                <div class="form-group col-md-6">
+                    Dirección: <input type="text" class="form-control" id="direccion" [(ngModel)]="cliente.direccion" name="direccion" #direccion="ngModel"/>
+                </div>
+                <div class="form-group col-md-6">
+                    Ciudad: <input type="text" class="form-control" id="ciudad" [(ngModel)]="cliente.ciudad" name="ciudad" #ciudad="ngModel"/>
+                </div>                            
+              </div>           
+              <div class="row">
+                <div class="form-group col-md-6">
+                    Codigo Postal: <input type="text" class="form-control" id="codigo_postal" [(ngModel)]="cliente.codigo_postal" name="codigo_postal" #codigo_postal="ngModel"/>
+                </div>
+                <div class="form-group col-md-6">
+                    Móvil: <input type="text" class="form-control" id="movil" [(ngModel)]="cliente.movil" name="movil" #movil="ngModel"/>
+                </div>                            
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                    Email: <input type="text" class="form-control" id="email" [(ngModel)]="cliente.email" name="email" #email="ngModel"/>
+                </div>
+                <div class="form-group col-md-6" style="margin-bottom: 1cm">
+                  <span>Sexo:</span>
+                  <select class="custom-select" id="sexo" [(ngModel)]="cliente.sexo" name="sexo" #sexo="ngModel">          
+                    <option value="hombre">Hombre</option>
+                    <option value="mujer">Mujer</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-info btn-sm" type="submit" style="float: right;">Añadir Cliente</button>
+                  <button class="btn btn-light btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+              </div>  
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>

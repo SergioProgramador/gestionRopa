@@ -9,10 +9,11 @@ import {MatInputModule} from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddCategoriaComponent } from './add-categoria/add-categoria.component';
 import { FormsModule }   from '@angular/forms';
+import { EditCategoriaComponent } from './edit-categoria/edit-categoria.component';
 
 
 @NgModule({
-  declarations: [ListCategoriasComponent, AddCategoriaComponent],
+  declarations: [ListCategoriasComponent, AddCategoriaComponent, EditCategoriaComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -41,7 +42,7 @@ import { FormsModule }   from '@angular/forms';
     FormsModule
 
   ],
-  entryComponents: [AddCategoriaComponent], 
+  entryComponents: [AddCategoriaComponent, EditCategoriaComponent], 
   
 })
 export class CategoriasModule { }

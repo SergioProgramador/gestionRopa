@@ -1,0 +1,60 @@
+<div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Proveedor</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmit()">
+              <div class="form-group" hidden="true">
+                <input type="text" hidden="true" class="form-control" id="id" [(ngModel)]="proveedor.id" name="id"/>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                    Empresa: <input type="text" class="form-control" id="empresa" [(ngModel)]="proveedor.empresa" name="empresa" #empresa="ngModel"/>
+                </div>
+                <div class="form-group col-md-6">
+                    Direccion: <input type="text" class="form-control" id="direccion" [(ngModel)]="proveedor.direccion" name="direccion" #direccion="ngModel"/>
+                </div>
+              </div>
+              <div class="form-group">
+                  Descripcion: <textarea type="text" class="form-control" id="descripcion" [(ngModel)]="proveedor.descripcion" name="descripcion" #descripcion="ngModel"></textarea>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                    Telefono: <input type="text" class="form-control" id="telefono" [(ngModel)]="proveedor.telefono" name="telefono" #telefono="ngModel"/>
+                </div>
+            
+                <div class="form-group col-md-6">
+                    Email: <input type="text" class="form-control" id="email" [(ngModel)]="proveedor.email" name="email" #email="ngModel"/>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-md-4">
+                      Frecuencia: <input type="text" class="form-control" id="frecuencia" [(ngModel)]="proveedor.frecuencia" name="frecuencia" #frecuencia="ngModel"/>
+                  </div>
+              
+                  <div class="form-group col-md-4">
+                      Estado de pago: <input type="text" class="form-control" id="estado_pago" [(ngModel)]="proveedor.estado_pago" name="estado_pago" #estado_pago="ngModel"/>
+                  </div>
+              
+                  <div class="form-group col-md-4">
+                      Cantidad: <input type="text" class="form-control" id="cantidad" [(ngModel)]="proveedor.cantidad" name="cantidad" #cantidad="ngModel"/>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-info btn-sm" type="submit" style="float: right;">Añadir Proveedor</button>
+                  <button class="btn btn-light btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+              </div>  
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

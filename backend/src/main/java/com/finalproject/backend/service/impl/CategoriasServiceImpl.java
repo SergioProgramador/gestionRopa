@@ -1,15 +1,12 @@
 package com.finalproject.backend.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.finalproject.backend.converter.CategoriasConverter;
 import com.finalproject.backend.entity.Categorias;
-import com.finalproject.backend.model.CategoriasModel;
 import com.finalproject.backend.repository.CategoriasRepository;
 import com.finalproject.backend.service.CategoriasService;
 
@@ -20,24 +17,15 @@ public class CategoriasServiceImpl implements CategoriasService{
 	@Qualifier("categoriasRepository")
 	private CategoriasRepository categoriasRepository;
 	
-	@Autowired
-	@Qualifier("categoriasConverter")
-	private CategoriasConverter categoriasConverter;
-	
 	@Override
-	public CategoriasModel addCategorias(CategoriasModel categoriasModel) {
-		Categorias categorias=categoriasRepository.save(categoriasConverter.convertModel2Entity(categoriasModel)); 
-		return categoriasConverter.convertEntity2Model(categorias);
+	public Categorias addCategorias(Categorias categorias) {
+		return categoriasRepository.save(categorias);
 	}
 
 	@Override
-	public List<CategoriasModel> listAllCategorias() {
-		List<Categorias> categorias=categoriasRepository.findAll();
-		List<CategoriasModel> categoriasModel =new ArrayList<CategoriasModel>();
-		for(Categorias categoria : categorias) {
-			categoriasModel.add(categoriasConverter.convertEntity2Model(categoria));
-		}		
-		return categoriasModel;
+	public List<Categorias> listAllCategorias() {
+		List<Categorias> categorias=categoriasRepository.findAll();	
+		return categorias;
 	}
 
 	@Override
@@ -53,9 +41,9 @@ public class CategoriasServiceImpl implements CategoriasService{
 		}	
 	}
 
-	@Override
-	public CategoriasModel findCategoriasModelById(int id) {
-		return categoriasConverter.convertEntity2Model(findCategoriasById(id));
-	}
+//	@Override
+//	public CategoriasModel findCategoriasModelById(int id) {
+//		return categoriasConverter.convertEntity2Model(findCategoriasById(id));
+//	}
 
 }
