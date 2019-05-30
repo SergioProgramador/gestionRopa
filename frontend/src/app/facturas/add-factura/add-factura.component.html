@@ -35,14 +35,31 @@
           <div class="col-sm-6">
             <mat-form-field class="example-full-width">
               <input type="text" placeholder="Busca un producto" aria-label="Number" matInput [formControl]="busquedaDinamica" [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let producto of productosBuscados | async" [value]="producto">
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="productoSeleccionado($event)">
+                <mat-option *ngFor="let producto of productosBuscados | async" [value]="producto"> 
                   {{producto.nombre}}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
           </div>    
         </div>
+
+        <table class="table table-hover table-sm" >
+          <thead>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Importe</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let linea of factura.listLineaFacturas">
+              <td>{{linea.producto.nombre}}</td>
+              <td>{{linea.producto.precio}} €</td>
+              <td><input type="number" value="{{linea.cantidad}}" class="form-control col-sm-4" (change)="updateCantidad(linea.producto.id, $event)"></td>
+              <td>{{linea.getImporte()}} €</td>
+            </tr>
+          </tbody>
+        </table>
 
         <div class="form-group row">   
           <h4 class="col-md-2">

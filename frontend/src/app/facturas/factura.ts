@@ -1,4 +1,4 @@
-import { LineaFactura } from '../lineas-facturas/linea-factura';
+import { LineaFactura } from '../lineas-facturas/lineaFactura';
 import { Cliente } from '../clientes/cliente';
 
 export interface Factura {
@@ -9,7 +9,7 @@ export interface Factura {
     fecha_venciminento:any;
     create_time: any;
     update_time: any;
-    listLineaFacturas: Array<LineaFactura>[];
+    listLineaFacturas: LineaFactura[];
     cliente_id:Cliente;
     total:number;
     subTotal:number;

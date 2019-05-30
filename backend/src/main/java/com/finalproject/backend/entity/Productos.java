@@ -74,8 +74,8 @@ public class Productos implements Serializable{
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(
 			name="productos_categorias",
-			joinColumns=@JoinColumn(name="producto_id"),
-			inverseJoinColumns=@JoinColumn(name="categoria_id")
+			joinColumns=@JoinColumn(name="idproducto"),
+			inverseJoinColumns=@JoinColumn(name="idcategoria")
 		)
 	private List<Categorias> categorias;
 	
