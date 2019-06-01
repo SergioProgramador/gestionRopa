@@ -39,7 +39,7 @@ public class ClientesController {
 		return clientesService.listAllClientes();
 	}
 
-	// LISTAR UN CLIENTE
+	// LISTAR UN CLIENTE1
 	@CrossOrigin
 	@GetMapping("/{id}")
 	public ResponseEntity<?> oneCliente(@PathVariable(name = "id") int id) {
