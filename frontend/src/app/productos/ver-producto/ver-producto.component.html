@@ -30,6 +30,7 @@
               </div>
 
               <button class="btn btn-light btn-sm" type="button" (click)="gotoProductos()">Volver</button>
+              <button class="btn btn-outline-danger btn-sm float-right" type="button" (click)="delete(producto)">Eliminar</button>
             </div>
             <div class="col-sm"> 
               <img *ngIf="producto?.imagen" src="http://localhost:8080/productos//uploadImagen/{{producto.imagen}}" alt="{{producto.imagen}}" width="500cm;" height="650cm;" class="img-thumbnail rounded">

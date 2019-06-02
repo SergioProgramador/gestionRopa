@@ -34,4 +34,8 @@ export class ListProductosComponent implements OnInit {
     this.router.navigate(['/productos/ver/'+id]);
   }
 
+  gotoAdd(){
+    this.router.navigate(['/productos/addProducto']);
+  }
+
 }

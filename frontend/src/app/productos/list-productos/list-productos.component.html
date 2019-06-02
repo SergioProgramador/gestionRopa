@@ -2,7 +2,7 @@
   <h2 class="titulo">Listado de Productos</h2>
 </div>
 <div class="bloque1"> 
-  <button type="button" class="btn btn-outline-info btn-sm agregar">Agregar</button>  
+  <button type="button" class="btn btn-outline-info btn-sm agregar" (click)="gotoAdd()">Agregar</button>  
   <div class="row listado-prod">
     <div class="col-md-3 mb-4" *ngFor="let producto of productos">
       <div class="card" style="width: 20rem;" >

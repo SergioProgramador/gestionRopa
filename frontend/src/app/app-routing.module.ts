@@ -9,6 +9,7 @@ import { VerFacturaComponent } from './facturas/ver-factura/ver-factura.componen
 import { AddFacturaComponent } from './facturas/add-factura/add-factura.component';
 import { ListProductosComponent } from './productos/list-productos/list-productos.component';
 import { VerProductoComponent } from './productos/ver-producto/ver-producto.component';
+import { AddProductoComponent } from './productos/add-producto/add-producto.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'facturas/create/:clienteId', component: AddFacturaComponent},
   {path: 'productos/showproductos', component: ListProductosComponent},
   {path: 'productos/ver/:id', component: VerProductoComponent},
+  {path: 'productos/addProducto', component: AddProductoComponent},
 ];
 
 @NgModule({

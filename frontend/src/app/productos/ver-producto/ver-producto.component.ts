@@ -54,4 +54,36 @@ export class VerProductoComponent implements OnInit {
     this.router.navigate(['/productos/showproductos']);
   }
 
+  delete(producto: Producto): void{
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `¿Seguro que desea eliminar este producto?`,
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar!',
+      cancelButtonText: "Cancelar",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        this.productoService.removeProducto(producto.id).subscribe(
+          response => {   
+            Swal.fire(
+              'Producto eliminado!',
+              `Producto ${producto.nombre} eliminado con éxito`,
+              'success'
+            );
+            this.router.navigate(['/productos/showproductos']);
+          }
+        );
+        Swal.fire(  
+          'Eliminado!',
+          'El producto ha sido eliminado',
+          'success'
+        )
+      }
+    })
+  }
+
 }
