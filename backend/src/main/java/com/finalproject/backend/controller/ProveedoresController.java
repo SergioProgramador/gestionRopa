@@ -107,7 +107,7 @@ public class ProveedoresController {
 	//ACTUALIZA UN PROVEEDOR
 	@CrossOrigin
 	@PutMapping("/updateProveedor/{id}")
-	public ResponseEntity<?> updateProveedot(@PathVariable("id") int id, @RequestBody @Valid Proveedores proveedores) {
+	public ResponseEntity<?> updateProveedor(@PathVariable("id") int id, @RequestBody @Valid Proveedores proveedores) {
 		
 		String id_str = String.valueOf(id);
 		Proveedores currentProveedor = proveedoresService.findProveedorById(id);		

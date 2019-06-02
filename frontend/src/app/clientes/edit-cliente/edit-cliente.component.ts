@@ -21,6 +21,7 @@ export class EditClienteComponent implements OnInit {
   }
 
   update() {
+    this.cliente.facturas=null;
     this.service.updateCliente(this.cliente.id, this.cliente).subscribe(
       update_cliente => {
         swal.fire('Cliente editado', `Cliente ${update_cliente.clinete.nombre} se ha editado correctamente!`, 'success');

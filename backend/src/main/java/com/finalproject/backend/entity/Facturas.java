@@ -42,7 +42,7 @@ public class Facturas implements Serializable{
 	@Column(name = "descripcion")
 	private String descripcion;
 	
-	@Column(name = "iva")
+	@Column(name = "iva", columnDefinition = "int default 21")
 	private int IVA;
 	
 	@Column(name = "create_time")
@@ -54,7 +54,7 @@ public class Facturas implements Serializable{
 	private Date update_time;
 	
 	//RELACION CON CLIENTES
-	@JsonIgnoreProperties({"facturas", "hibernateLazyInitializer", "handler"})
+	@JsonIgnoreProperties(value={"facturas", "hibernateLazyInitializer", "handler"}, allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Clientes cliente_id;
 	

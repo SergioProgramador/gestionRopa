@@ -1,0 +1,24 @@
+<div class="row">
+  <h2 class="titulo">Listado de Productos</h2>
+</div>
+<div class="bloque1"> 
+  <button type="button" class="btn btn-outline-info btn-sm agregar">Agregar</button>  
+  <div class="row listado-prod">
+    <div class="col-md-3 mb-4" *ngFor="let producto of productos">
+      <div class="card" style="width: 20rem;" >
+        <img class="card-img-top" src="http://localhost:8080/productos//uploadImagen/{{producto.imagen}}" alt="{{producto.imagen}}" width="150cm;" height="400cm;">
+        <div class="card-body">
+          <button class="btn btn-outline-secondary btn-sm float-right" (click)="goToVerProducto(producto.id)">
+            Ver más
+          </button>
+          <p class="card-text">{{producto.nombre}}</p>          
+          <p><span>Talla: </span>{{producto.talla}}</p>
+          <h5>{{producto.precio}} €</h5>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Stock: <span>{{producto.stock}}</span></small>
+        </div>
+      </div>      
+    </div>    
+  </div>  
+</div>

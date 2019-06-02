@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -76,6 +80,27 @@ public class FacturasController {
 	
 		response.put("info", "La factura se ha eliminado con éxito!");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+	}
+	
+	//CREA UNA FACTURA
+	@CrossOrigin
+	@PostMapping("/addFactura")
+	public ResponseEntity<?> addFactura(@RequestBody @Valid Facturas facturas) {
+
+		Facturas factura = null;
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			factura = facturasService.addFacturas(facturas);
+		} catch (DataAccessException e) {
+			response.put("info", "Error al añadir la factura, intentalo de nuevo.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		response.put("info", "Se ha añadido la factura correctamente.");
+		response.put("factura", factura);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 	
 	

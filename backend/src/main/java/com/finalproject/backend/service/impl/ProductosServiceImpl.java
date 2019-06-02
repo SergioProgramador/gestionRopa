@@ -19,20 +19,18 @@ public class ProductosServiceImpl implements ProductosService{
 
 	@Override
 	public Productos addProductos(Productos productos) {
-		// TODO Auto-generated method stub
-		return null;
+		return productosRepository.save(productos);
 	}
 
 	@Override
 	public List<Productos> listAllProductos() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Productos> productos=productosRepository.findAll();	
+		return productos;
 	}
 
 	@Override
 	public Productos findProductosById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return productosRepository.findById(id);
 	}
 
 	@Override
@@ -42,7 +40,10 @@ public class ProductosServiceImpl implements ProductosService{
 
 	@Override
 	public void removeProductos(int id) {
-		// TODO Auto-generated method stub
+		Productos productos = findProductosById(id);
+		if(null != productos){
+			productosRepository.delete(productos);
+		}
 		
 	}
 

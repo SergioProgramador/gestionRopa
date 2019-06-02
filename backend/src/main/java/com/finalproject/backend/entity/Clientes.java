@@ -65,7 +65,7 @@ public class Clientes implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date update_time;
 	
-	@JsonIgnoreProperties({"cliente_id" , "hibernateLazyInitializer", "handler"})
+	@JsonIgnoreProperties(value={"cliente_id" , "hibernateLazyInitializer", "handler"}, allowSetters=true)
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="cliente_id", cascade=CascadeType.ALL)
 	private List<Facturas> facturas;
 	

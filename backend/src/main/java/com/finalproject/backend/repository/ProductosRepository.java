@@ -11,6 +11,10 @@ import com.finalproject.backend.entity.Productos;
 @Repository("productosRepository")
 public interface ProductosRepository extends JpaRepository<Productos, Serializable> {
 	
+	public abstract Productos findById(int id);
+	
+	public abstract Productos findByNombre(String nombre);
+	
 	//METODO QUE DEVUELVE UNA LISTA DE PRODUCTOS QUE CONTENGAN EL PARAMETRO PASADO, YA SEA MINUSCULA O MAY
 	public List<Productos> findByNombreContainingIgnoreCase(String nombre);
 	

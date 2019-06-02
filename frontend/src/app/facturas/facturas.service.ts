@@ -14,6 +14,7 @@ export class FacturasService {
   private httpHeaders = new HttpHeaders({'Content-type': 'application/json'})
   url_getOne_factura = "http://localhost:8080/facturas";
   url_remove_factura = "http://localhost:8080/facturas/removeFactura"
+  url_add_factura = "http://localhost:8080/facturas/addFactura"
   url_getProductosFiltrados = "http://localhost:8080/facturas/productosFiltrados"
 
   constructor(private httpClient: HttpClient) { 
@@ -41,6 +42,18 @@ export class FacturasService {
           Swal.fire('Error al eliminar la factura.', e.error.info, 'error');
           return throwError(e);
         })        
+      );
+  }
+
+  //GUARDA UNA FACTURA
+  addFactura(factura: Factura): Observable<any> {
+    return this.httpClient.post<any>(this.url_add_factura, factura, {headers: this.httpHeaders})
+      .pipe(
+        catchError(e => {
+          console.error(e.error.info);
+          Swal.fire('Error al crear la factura.', e.error.info, 'error');
+          return throwError(e);
+        })
       );
   }
 

@@ -7,6 +7,8 @@ import { ListClientesComponent } from './clientes/list-clientes/list-clientes.co
 import { VerClienteComponent } from './clientes/ver-cliente/ver-cliente.component';
 import { VerFacturaComponent } from './facturas/ver-factura/ver-factura.component';
 import { AddFacturaComponent } from './facturas/add-factura/add-factura.component';
+import { ListProductosComponent } from './productos/list-productos/list-productos.component';
+import { VerProductoComponent } from './productos/ver-producto/ver-producto.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -17,6 +19,8 @@ const routes: Routes = [
   {path: 'clientes/ver/:id', component: VerClienteComponent},
   {path: 'facturas/ver/:id', component: VerFacturaComponent},
   {path: 'facturas/create/:clienteId', component: AddFacturaComponent},
+  {path: 'productos/showproductos', component: ListProductosComponent},
+  {path: 'productos/ver/:id', component: VerProductoComponent},
 ];
 
 @NgModule({

@@ -9,6 +9,7 @@ import { FacturasService } from '../facturas.service';
 import { Producto } from 'src/app/productos/producto';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { LineaFactura } from 'src/app/lineas-facturas/lineaFactura';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-factura',
@@ -57,12 +58,14 @@ export class AddFacturaComponent implements OnInit {
     let producto = event.option.value as Producto;
     console.log(producto);
 
-    let lineaFactura : LineaFactura;
-    lineaFactura = new LineaFactura();
-    lineaFactura.producto = producto;
-    
-    this.factura.listLineaFacturas.push(lineaFactura);
-
+    if(this.comprobarProducto(producto.id)){
+      this.incrementoCantidad(producto.id);
+    }else{
+      let lineaFactura : LineaFactura;
+      lineaFactura = new LineaFactura();
+      lineaFactura.producto = producto;      
+      this.factura.listLineaFacturas.push(lineaFactura);
+    }
 
     this.busquedaDinamica.setValue(''); //dejamos limpio el autocomplete para buscar otro producto.
     event.option.focus();
@@ -80,5 +83,37 @@ export class AddFacturaComponent implements OnInit {
     });
 
   }
+
+  private comprobarProducto(id: number): boolean{
+    let comprobacion = false;
+    this.factura.listLineaFacturas.forEach((linea: LineaFactura) =>{
+      if(id === linea.producto.id){
+        comprobacion = true; 
+      }
+    })
+    return comprobacion;
+  }
+
+  private incrementoCantidad(id: number): void{    
+    this.factura.listLineaFacturas = this.factura.listLineaFacturas.map((linea:LineaFactura) =>{
+    if(id === linea.producto.id){
+      linea.cantidad += 1;
+    }
+    return linea;
+    });
+  } 
+
+  eliminarLinea(id: number): void{
+    this.factura.listLineaFacturas = this.factura.listLineaFacturas.filter((linea: LineaFactura) => id !== linea.producto.id);
+  }
+
+  crearFactura(id: number): void{
+    console.log(this.factura)
+    this.facturasService.addFactura(this.factura).subscribe(factura => {
+      Swal.fire('Nueva Factura', `Factura Nº ${factura.id} añadida correctamente!`, 'success');
+      this.router.navigate(['/clientes/ver/'+ id]);
+    });
+  }
+
 
 }
