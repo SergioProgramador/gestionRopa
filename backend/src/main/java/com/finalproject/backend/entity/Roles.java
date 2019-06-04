@@ -13,8 +13,8 @@ public class Roles {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id", nullable=false)
-	private int id;
+	@Column(name="role_id", nullable=false)
+	private int role_id;
 
 	@Column(name="role", unique=true, nullable=false, length=30) //un usuario siempre tiene que tener un rol
 	private String role;
@@ -25,24 +25,26 @@ public class Roles {
 		
 	}
 	
-	public Roles(int id, String role) {
+	public Roles(int role_id, String role) {
 		super();
-		this.id = id;
+		this.role_id = role_id;
 		this.role = role;
 	}
 
 	//GETTERS AND SETTERS
-	public int getId() {
-		return id;
+
+	public int getRole_id() {
+		return role_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setRole_id(int role_id) {
+		this.role_id = role_id;
 	}
-
+	
 	public String getRole() {
 		return role;
 	}
+
 
 	public void setRole(String role) {
 		this.role = role;

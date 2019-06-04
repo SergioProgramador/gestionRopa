@@ -5,13 +5,15 @@ import { VerProductoComponent } from './ver-producto/ver-producto.component';
 import { AddProductoComponent } from './add-producto/add-producto.component';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
+import { FilterPipe } from '../filtrados/filter.pipe';
 
 @NgModule({
-  declarations: [ListProductosComponent, VerProductoComponent, AddProductoComponent],
+  declarations: [ListProductosComponent, VerProductoComponent, AddProductoComponent, FilterPipe],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
+
     
   ],
   exports: [
@@ -19,7 +21,7 @@ import { HttpClientModule } from "@angular/common/http";
     VerProductoComponent,
     AddProductoComponent,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
 })
 export class ProductosModule { }

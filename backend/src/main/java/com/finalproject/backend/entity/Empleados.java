@@ -21,28 +21,28 @@ import javax.persistence.UniqueConstraint;
 public class Empleados {
 	
 	@Id
-	@Column(name="username", unique=true, nullable=false, length=100)
+	@Column(name="username", unique=true, nullable=false)
 	private String username;
 	
-	@Column(name="password", nullable=false, length=60)
+	@Column(name="password", nullable=false)
 	private String password;
 	
 	@Column(name="enabled", nullable=false)
 	private Boolean enabled;
 	
-	@Column(name="nombre", nullable=false, length=50)
+	@Column(name="nombre", nullable=false)
 	private String nombre;
 	
-	@Column(name="apellidos", nullable=false, length=100)
+	@Column(name="apellidos", nullable=false)
 	private String apellidos;
 	
-	@Column(name = "direccion", nullable=false, length=100)
+	@Column(name = "direccion", nullable=false)
 	private String direccion;
 	
-	@Column(name="email", nullable=false, length=70)
+	@Column(name="email", nullable=false)
 	private String email;
 	
-	@Column(name="telefono", nullable=false, length=9)
+	@Column(name="telefono", nullable=false)
 	private String telefono;
 	
 	@Column(name = "create_time")
@@ -54,8 +54,8 @@ public class Empleados {
 	private Date update_time;
 	
 	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinTable(name="empleados_roles", joinColumns= @JoinColumn(name="empleado_id"), inverseJoinColumns=@JoinColumn(name="role_id")
-	, uniqueConstraints= {@UniqueConstraint(columnNames= {"empleado_id", "role_id"})})
+	@JoinTable(name="empleados_roles", joinColumns= @JoinColumn(name="username"), inverseJoinColumns=@JoinColumn(name="role_id")
+	, uniqueConstraints= {@UniqueConstraint(columnNames= {"username", "role_id"})})
 	private List<Roles> roles;
 
 	//CONSTRUCTORS

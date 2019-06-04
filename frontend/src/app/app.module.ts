@@ -12,6 +12,7 @@ import { ClientesModule } from './clientes/clientes.module';
 import { ProductosModule } from './productos/productos.module';
 import { FacturasModule } from './facturas/facturas.module';
 import { LineasFacturasModule } from './lineas-facturas/lineas-facturas.module';
+import { FiltradosModule } from './filtrados/filtrados.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LineasFacturasModule } from './lineas-facturas/lineas-facturas.module';
     ClientesModule,
     ProductosModule,
     FacturasModule,
-    LineasFacturasModule
+    LineasFacturasModule,
+    FiltradosModule
   ],
   providers: [
    
