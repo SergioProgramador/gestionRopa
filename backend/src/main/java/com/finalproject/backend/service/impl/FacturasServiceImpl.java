@@ -18,7 +18,8 @@ public class FacturasServiceImpl implements FacturasService{
 	private FacturasRepository facturasRepository;
 	
 	@Override
-	public Facturas addFacturas(Facturas facturas) {	
+	public Facturas addFacturas(Facturas facturas) {
+		
 		return facturasRepository.save(facturas);
 	}
 

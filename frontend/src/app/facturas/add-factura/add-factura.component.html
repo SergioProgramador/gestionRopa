@@ -6,6 +6,9 @@
   <div class="card bg-light " style="width: auto;">
     <div class="card-body">
       <form>
+        <div class="form-group" hidden="true">
+          <input type="text" hidden="true" class="form-control" id="id" [(ngModel)]="factura.id" name="id"/>
+        </div>
         <div class=" row" *ngIf="factura.cliente_id">
           <div class="form-group col-md-6">
             Cliente: <input type="text" name="cliente_id" class="form-control" 

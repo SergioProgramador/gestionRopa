@@ -1,17 +1,20 @@
 package com.finalproject.backend.entity;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name="empleados")
@@ -21,8 +24,11 @@ public class Empleados {
 	@Column(name="username", unique=true, nullable=false, length=100)
 	private String username;
 	
-	@Column(name="password", nullable=false, length=50)
+	@Column(name="password", nullable=false, length=60)
 	private String password;
+	
+	@Column(name="enabled", nullable=false)
+	private Boolean enabled;
 	
 	@Column(name="nombre", nullable=false, length=50)
 	private String nombre;
@@ -47,19 +53,22 @@ public class Empleados {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date update_time;
 	
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="empleado")
-	private Set<Roles> roles = new HashSet<Roles>();
-	
-	//CONSTRUCTOR
+	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinTable(name="empleados_roles", joinColumns= @JoinColumn(name="empleado_id"), inverseJoinColumns=@JoinColumn(name="role_id")
+	, uniqueConstraints= {@UniqueConstraint(columnNames= {"empleado_id", "role_id"})})
+	private List<Roles> roles;
+
+	//CONSTRUCTORS
 	public Empleados() {
 		
 	}
-
-	public Empleados(String username, String password, String nombre, String apellidos, String direccion, String email,
-			String telefono, Date create_time, Date update_time, Set<Roles> roles) {
+	
+	public Empleados(String username, String password, Boolean enabled, String nombre, String apellidos,
+			String direccion, String email, String telefono, Date create_time, Date update_time, List<Roles> roles) {
 		super();
 		this.username = username;
 		this.password = password;
+		this.enabled = enabled;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.direccion = direccion;
@@ -69,7 +78,7 @@ public class Empleados {
 		this.update_time = update_time;
 		this.roles = roles;
 	}
-	
+
 	//GETTERS AND SETTERS
 	public String getUsername() {
 		return username;
@@ -85,6 +94,14 @@ public class Empleados {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public String getNombre() {
@@ -143,13 +160,15 @@ public class Empleados {
 		this.update_time = update_time;
 	}
 
-	public Set<Roles> getRoles() {
+	public List<Roles> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<Roles> roles) {
+	public void setRoles(List<Roles> roles) {
 		this.roles = roles;
 	}
+	
+	
 	
 	
 	

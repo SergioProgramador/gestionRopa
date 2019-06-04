@@ -88,7 +88,7 @@ public class ProductosController {
 			String nombreImagenAnterior = producto.getImagen();
 			
 			if(nombreImagenAnterior != null && nombreImagenAnterior.length() > 0) {
-				Path rutaImagenAnterior = Paths.get("C:\\Users\\Sergio Gil Andamoyo\\Desktop\\gestionRopa\\backend\\src\\main\\resources\\multimedia").resolve(nombreImagenAnterior);
+				Path rutaImagenAnterior = Paths.get("C:\\Users\\Sergio\\Desktop\\gestionRopa\\backend\\src\\main\\resources\\multimedia").resolve(nombreImagenAnterior);
 				File fileAnterior = rutaImagenAnterior.toFile();
 				if(fileAnterior.exists() && fileAnterior.canRead()) {
 					fileAnterior.delete();
@@ -179,7 +179,7 @@ public class ProductosController {
 		if(!file.isEmpty()) {
 			String nombreFile = UUID.randomUUID().toString() + "_" + file.getOriginalFilename().replace(" ", "");
 			//OBTENEMOS LA RUTA DONDE SE VA A UARDAR LOS FILES SUBIDOS, Y LO "CONCATENAMOS" CON EL NOMBRE DEL ARCHIVO QUE VAMOS A SUBIR Y TENDRIAMOS LA RUTA ABSOLUTA
-			Path ruta = Paths.get("C:\\Users\\Sergio Gil Andamoyo\\Desktop\\gestionRopa\\backend\\src\\main\\resources\\multimedia").resolve(nombreFile).toAbsolutePath();
+			Path ruta = Paths.get("C:\\Users\\Sergio\\Desktop\\gestionRopa\\backend\\src\\main\\resources\\multimedia").resolve(nombreFile).toAbsolutePath();
 			try {
 				Files.copy(file.getInputStream(), ruta);
 			} catch (IOException e) {
@@ -215,7 +215,7 @@ public class ProductosController {
 	@GetMapping("/uploadImagen/{nombreImagen:.+}")
 	public ResponseEntity<Resource> seeImagen(@PathVariable String nombreImagen){
 		
-		Path ruta = Paths.get("C:\\Users\\Sergio Gil Andamoyo\\Desktop\\gestionRopa\\backend\\src\\main\\resources\\multimedia").resolve(nombreImagen).toAbsolutePath();
+		Path ruta = Paths.get("C:\\Users\\Sergio\\Desktop\\gestionRopa\\backend\\src\\main\\resources\\multimedia").resolve(nombreImagen).toAbsolutePath();
 		Resource recurso = null;
 		try {
 			recurso = new UrlResource(ruta.toUri()); 	

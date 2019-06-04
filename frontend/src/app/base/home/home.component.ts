@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   }
 
   start(){
-    this.router.navigate(['/categorias/showcategorias']);
+    this.router.navigate(['/productos/showproductos']);
   }
 
 }

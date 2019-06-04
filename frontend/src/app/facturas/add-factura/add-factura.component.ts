@@ -110,7 +110,7 @@ export class AddFacturaComponent implements OnInit {
   crearFactura(id: number): void{
     console.log(this.factura)
     this.facturasService.addFactura(this.factura).subscribe(factura => {
-      Swal.fire('Nueva Factura', `Factura Nº ${factura.id} añadida correctamente!`, 'success');
+      Swal.fire('Nueva Factura', `${this.factura.titulo} añadida correctamente!`, 'success');
       this.router.navigate(['/clientes/ver/'+ id]);
     });
   }

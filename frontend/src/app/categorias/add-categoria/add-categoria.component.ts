@@ -26,7 +26,6 @@ export class AddCategoriaComponent implements OnInit {
     console.log(this.categoria)
     this.service.addCategoria(this.categoria).subscribe(
       response => {
-        this.modalService.notificarUpload.emit(this.categoria),
         this.modalService.closeModal(),
         swal.fire('Nueva Categoría', `Categoría ${this.categoria.nombre} añadida correctamente!`, 'success')
       }      
