@@ -10,10 +10,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AddCategoriaComponent } from './add-categoria/add-categoria.component';
 import { FormsModule }   from '@angular/forms';
 import { EditCategoriaComponent } from './edit-categoria/edit-categoria.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 
 @NgModule({
-  declarations: [ListCategoriasComponent, AddCategoriaComponent, EditCategoriaComponent],
+  declarations: [ListCategoriasComponent, AddCategoriaComponent, EditCategoriaComponent, SidenavComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -25,7 +27,8 @@ import { EditCategoriaComponent } from './edit-categoria/edit-categoria.componen
     MatIconModule,
     MatInputModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
     
   ],
   exports:[

@@ -21,6 +21,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -169,6 +170,7 @@ public class ProductosController {
 	
 	//METODO PARA SUBIR UNA IMAGEN
 	@PostMapping("/uploadImagen")
+	@CrossOrigin
 	public ResponseEntity<?> uploadImagen(@RequestParam(name="file") MultipartFile file, @RequestParam(name="id") Long id){
 		
 		Map<String, Object> response = new HashMap<>();	
@@ -213,6 +215,7 @@ public class ProductosController {
 	//METODO PARA VER LA IMAGEN
 	//:.+ --> INDICA QUE ESE PARAMETRO VA A TENER UN PUNTO Y UNA EXTENSION
 	@GetMapping("/uploadImagen/{nombreImagen:.+}")
+	@CrossOrigin
 	public ResponseEntity<Resource> seeImagen(@PathVariable String nombreImagen){
 		
 		Path ruta = Paths.get("C:\\Users\\Sergio\\Desktop\\gestionRopa\\backend\\src\\main\\resources\\multimedia").resolve(nombreImagen).toAbsolutePath();

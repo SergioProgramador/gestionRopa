@@ -1,0 +1,55 @@
+
+<div class="titulo-nav">
+    <p>PRINCIPAL</p>
+</div>
+<div class="position">            
+    <ul>
+        <li>
+            <a class="estilo" routerLink="/productos/showproductos" >
+                <span class="mat-button-wrapper">Listado Productos</span>
+            </a>                    
+        </li>
+    </ul>
+</div>
+<div class="titulo2-nav">
+    <p>PANEL DE ADMINISTRACIÓN</p>
+</div>
+<div class="position2">            
+    <ul>
+
+        <li>
+            <a class="estilo" routerLink="/clientes/showclientes" aria-disabled="false">
+                <span class="mat-button-wrapper">Clientes</span>
+            </a>
+        </li>
+
+        <li>
+            <a class="estilo" routerLink="/categorias/showcategorias" aria-disabled="false">
+                <span class="mat-button-wrapper">Categorias</span>
+            </a>                    
+        </li>
+            
+        <li>
+            <a class="estilo" routerLink="/proveedores/showproveedores" aria-disabled="false">
+                <span class="mat-button-wrapper">Proveedores</span>
+            </a>
+        </li>
+
+        <hr> 
+        <li class="dropdown ">
+            <a class="btn btn-info btn-sm dropdown-toggle cerrar" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{authService.empleado.username}}
+            </a>
+            
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <button type="submit" class="dropdown-item" (click)="logout()">Cerrar Sesión</button>
+            </div>
+        </li>
+    </ul>    
+</div>    
+      <!-- <div class="col-md-9">
+        <main> 
+            <app-list-proveedores></app-list-proveedores>
+        </main>
+      </div>       -->
+

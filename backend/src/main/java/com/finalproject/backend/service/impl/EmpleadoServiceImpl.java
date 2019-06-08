@@ -18,9 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.finalproject.backend.entity.Empleados;
 import com.finalproject.backend.repository.EmpleadosRepository;
+import com.finalproject.backend.service.IEmpleadosService;
 
 @Service("empleadoService")
-public class EmpleadoServiceImpl implements UserDetailsService{ //IMPLEMENTAMOS LA INTERFAZ DE SPRING SECURITY PARA TRABAJAR CON JPA
+public class EmpleadoServiceImpl implements IEmpleadosService, UserDetailsService{ //IMPLEMENTAMOS LA INTERFAZ DE SPRING SECURITY PARA TRABAJAR CON JPA
 
 	private Logger logger = LoggerFactory.getLogger(EmpleadoServiceImpl.class);
 	
@@ -44,6 +45,13 @@ public class EmpleadoServiceImpl implements UserDetailsService{ //IMPLEMENTAMOS 
 				.collect(Collectors.toList());
 		
 		return new User(empleados.getUsername(), empleados.getPassword(), empleados.getEnabled(), true, true, true, roles);
+	}
+
+	
+	@Override
+	@Transactional(readOnly=true)
+	public Empleados findByUsername(String username) {
+		return empleadosRepository.findByUsername(username);
 	}
 
 }

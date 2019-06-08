@@ -6,13 +6,16 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { EditClienteComponent } from './edit-cliente/edit-cliente.component';
 import { VerClienteComponent } from './ver-cliente/ver-cliente.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
-  declarations: [ListClientesComponent, AddClienteComponent, EditClienteComponent, VerClienteComponent],
+  declarations: [ListClientesComponent, AddClienteComponent, EditClienteComponent, VerClienteComponent, SidenavComponent],
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   exports: [
     ListClientesComponent, 

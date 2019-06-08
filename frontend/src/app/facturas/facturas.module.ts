@@ -7,9 +7,11 @@ import { AddFacturaComponent } from './add-factura/add-factura.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { AppRoutingModule } from '../app-routing.module';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
-  declarations: [VerFacturaComponent, AddFacturaComponent],
+  declarations: [VerFacturaComponent, AddFacturaComponent, SidenavComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -18,7 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    
+    AppRoutingModule
   ],
   exports:[
     VerFacturaComponent,

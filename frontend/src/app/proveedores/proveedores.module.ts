@@ -9,9 +9,11 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { AddProveedorComponent } from './add-proveedor/add-proveedor.component';
 import { EditProveedorComponent } from './edit-proveedor/edit-proveedor.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
-  declarations: [ListProveedoresComponent, AddProveedorComponent, EditProveedorComponent],
+  declarations: [ListProveedoresComponent, AddProveedorComponent, EditProveedorComponent, SidenavComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -23,6 +25,7 @@ import { EditProveedorComponent } from './edit-proveedor/edit-proveedor.componen
     MatDialogModule,
     FormsModule,
     HttpClientModule,
+    AppRoutingModule
   ],
   exports: [
     ListProveedoresComponent,
@@ -37,6 +40,7 @@ import { EditProveedorComponent } from './edit-proveedor/edit-proveedor.componen
     FormsModule,
     HttpClientModule,
     AddProveedorComponent,
+    SidenavComponent
   ],
   entryComponents: [AddProveedorComponent, EditProveedorComponent],
 })

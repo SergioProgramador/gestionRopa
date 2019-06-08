@@ -1,50 +1,72 @@
-<div class="bloque1">
-  <div *ngIf="factura">
-    <div class="row">
-        <h2 class="titulo">FACTURA Nº: {{factura.id}}</h2>  
-    </div>
-    <hr/>
-    <div class="card bg-light">
-      <div class="card-body">    
-        <ul class="list-group my-2">
-          <li class="list-group-item list-group-item-info">Datos del cliente</li>
-          <li class="list-group-item"><b>Nombre: </b>{{factura.cliente_id.nombre}}</li>
-          <li class="list-group-item"><b>Apellidos: </b>{{factura.cliente_id.apellidos}}</li>
-        </ul>
-    
-        <ul class="list-group my-2">
-          <li class="list-group-item list-group-item-info">Datos de la factura</li>
-          <li class="list-group-item"><b>Titulo: </b> {{factura.titulo}}</li>
-          <li class="list-group-item"><b>Descripcion: </b>{{factura.descripcion}}</li>        
-          <li class="list-group-item"><b>Fecha de vencimiento: </b>{{factura.fecha_vencimiento | date: 'dd-MM-yyyy'}}</li>
-          <li class="list-group-item"><b>Fecha de creacion: </b>{{factura.create_time | date: 'dd-MM-yyyy'}}</li>
-          <li class="list-group-item"><b>SUBTOTAL: </b>{{factura.subTotal}} €</li>
-          <li class="list-group-item"><b>IVA: </b>{{factura.iva}} %</li>
-        </ul>
+
+<div class="row">
+  <div class="col-md-3">
+    <app-sidenav></app-sidenav>
+  </div>
+  <div class="col-md-9">
+    <div class="bloque1">
+      <div *ngIf="factura">
+        <div class="row">
+            <h2 class="titulo">FACTURA Nº: {{factura.id}}</h2>  
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="col-md-12">
+              <button type="button" class="btn btn-outline-danger btn-sm mb-4 float-right">
+                  <a href="javascript:genPDF()" class="pdf">Exportar a PDF</a>
+              </button>
+          </div>        
+        </div>
+        <div class="card bg-light">
+          <div class="card-body" >    
+            <div class="list-group my-2">
+              <p class="list-group-item list-group-item-info">Datos del cliente</p>
+              <p class="list-group-item" id="nombreCliente"><b>Nombre: </b>{{factura.cliente_id.nombre}}</p>
+              <p class="list-group-item" id="apellidoCliente"><b>Apellidos: </b>{{factura.cliente_id.apellidos}}</p>
+            </div>
+        
+            <div class="list-group my-2" >
+                <p class="list-group-item list-group-item-info">Datos de la factura</p>
+              <div id="datos">         
+                  <p class="list-group-item"><b>Titulo: </b> {{factura.titulo}}</p>
+                  <p class="list-group-item"><b>Descripcion: </b>{{factura.descripcion}}</p>        
+                  <p class="list-group-item"><b>Fecha de vencimiento: </b>{{factura.fecha_vencimiento | date: 'dd-MM-yyyy'}}</p>
+                  <p class="list-group-item"><b>Fecha de creacion: </b>{{factura.create_time | date: 'dd-MM-yyyy'}}</p>
+                  <p class="list-group-item"><b>SUBTOTAL: </b>{{factura.subTotal}} EUROS</p>
+                  <p class="list-group-item"><b>IVA: </b>{{factura.iva}} %</p>
+              </div>              
+            </div>
+          </div>
+          
+          <div class="card-body" >
+            <div id="tabla">
+              <table class="table table-striped table-hover table-bordered" >
+                  <thead>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let linea of factura.listLineaFacturas">
+                      <td>{{linea.producto.nombre}}</td>
+                      <td>{{linea.producto.precio}} €</td>
+                      <td>{{linea.cantidad}}</td>
+                      <td>{{linea.importe}} €</td>
+                    </tr>
+                  </tbody>
+                </table>  
+            </div>             
+            <button (click)="goClientes(factura.cliente_id.id)" class="btn btn-light btn-sm">Volver</button>             
+            <h5 class="float-right">
+              <span>TOTAL + IVA: </span><span class="badge badge-danger" style="font-size: 80%">{{factura.total}} €</span>
+            </h5>   
+            <div hidden id="total">
+              <p>{{factura.total}} EUROS</p>
+            </div>    
+          </div>     
+        </div>
       </div>
-      
-      <div class="card-body">
-        <table class="table table-striped table-hover table-bordered">
-          <thead>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Total</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let linea of factura.listLineaFacturas">
-              <td>{{linea.producto.nombre}}</td>
-              <td>{{linea.producto.precio}} €</td>
-              <td>{{linea.cantidad}}</td>
-              <td>{{linea.importe}} €</td>
-            </tr>
-          </tbody>
-        </table>   
-        <button (click)="goClientes(factura.cliente_id.id)" class="btn btn-light btn-sm">Volver</button>             
-        <h5 class="float-right">
-          <span>TOTAL + IVA: </span><span class="badge badge-danger" style="font-size: 80%">{{factura.total}} €</span>
-        </h5>      
-      </div>     
     </div>
   </div>
 </div>

@@ -1,35 +1,42 @@
 <app-add-categoria></app-add-categoria>
 <app-edit-categoria *ngIf="categoriaSeleccionada" [categoria] = "categoriaSeleccionada"></app-edit-categoria>
 <div class="row">
-    <h2 class="titulo">Listado de Categorías</h2>
-</div>
-<div class="bloque1">  
-    <button type="button" class="btn btn-outline-info btn-sm agregar" data-toggle="modal" data-target="#modal">Agregar</button>  
-    <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Acción</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cat of categorias">
-        <td>{{cat.nombre}}</td>
-        <td>
-          <button type="button" class="btn btn-outline-info btn1" (click)="abrirModal(cat)" data-toggle="modal" data-target="#modalEditar">
-            <a>
-                <i class="material-icons" style="margin-right: 4%">edit</i>
-            </a>
-          </button>          
-          <button type="button" class="btn btn-outline-info btn2" >
-            <a (click)="delete(cat)">
-                <i class="material-icons">delete_outline</i>           
-            </a>
-          </button>          
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="col-md-3">
+    <app-sidenav></app-sidenav>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+        <h2 class="titulo">Listado de Categorías</h2>
+    </div>
+    <div class="bloque1">  
+        <button type="button" class="btn btn-outline-info btn-sm agregar" data-toggle="modal" data-target="#modal">Agregar</button>  
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cat of categorias">
+            <td>{{cat.nombre}}</td>
+            <td>
+              <button type="button" class="btn btn-outline-info btn1" (click)="abrirModal(cat)" data-toggle="modal" data-target="#modalEditar">
+                <a>
+                    <i class="material-icons" style="margin-right: 4%">edit</i>
+                </a>
+              </button>          
+              <button type="button" class="btn btn-outline-info btn2" >
+                <a (click)="delete(cat)">
+                    <i class="material-icons">delete_outline</i>           
+                </a>
+              </button>          
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 

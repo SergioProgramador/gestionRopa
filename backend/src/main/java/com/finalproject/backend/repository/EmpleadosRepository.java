@@ -12,7 +12,7 @@ import com.finalproject.backend.entity.Empleados;
 @Repository("empleadosRepository")
 public interface EmpleadosRepository extends CrudRepository<Empleados, Serializable>{
 	
-	public abstract Empleados findByUsername(String username); //con este metodo encontraremos a un empleado por su username.
+	public Empleados findByUsername(String username); //con este metodo encontraremos a un empleado por su username.
 	
 	@Query("select e from Empleados e where e.username=?1")
 	public Empleados findByUsername2(String username);

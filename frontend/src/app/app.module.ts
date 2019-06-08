@@ -13,6 +13,8 @@ import { ProductosModule } from './productos/productos.module';
 import { FacturasModule } from './facturas/facturas.module';
 import { LineasFacturasModule } from './lineas-facturas/lineas-facturas.module';
 import { FiltradosModule } from './filtrados/filtrados.module';
+import { AutentificacionModule } from './autentificacion/autentificacion.module';
+import { EmpleadosModule } from './empleados/empleados.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { FiltradosModule } from './filtrados/filtrados.module';
     ProductosModule,
     FacturasModule,
     LineasFacturasModule,
-    FiltradosModule
+    FiltradosModule,
+    AutentificacionModule,
+    EmpleadosModule
   ],
   providers: [
    

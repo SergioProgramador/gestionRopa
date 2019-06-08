@@ -1,5 +1,9 @@
 package com.finalproject.backend.configuration;
 
+import java.util.Arrays;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
@@ -25,6 +30,9 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter{
 	@Autowired
 	@Qualifier("authenticationManager")
 	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private InfoAddToken infoAddToken;
 
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -47,18 +55,22 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter{
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 
+		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoAddToken, accessTokenConverter()));		
 		endpoints.authenticationManager(authenticationManager)
 		.tokenStore(tokenStore())
-		.accessTokenConverter(accessTokenConverter());
-		super.configure(endpoints);
+		.accessTokenConverter(accessTokenConverter())
+		.tokenEnhancer(tokenEnhancerChain);
+	
 	}
 
 	@Bean
 	public JwtTokenStore tokenStore() {
 		return new JwtTokenStore(accessTokenConverter());
 	}
+	
 
-	@Bean
+	@PostConstruct
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
 		jwtAccessTokenConverter.setSigningKey(JwtConfig.RSA_PRIVADA);

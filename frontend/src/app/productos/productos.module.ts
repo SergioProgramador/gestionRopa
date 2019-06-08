@@ -6,15 +6,16 @@ import { AddProductoComponent } from './add-producto/add-producto.component';
 import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { FilterPipe } from '../filtrados/filter.pipe';
+import { AppRoutingModule } from '../app-routing.module';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
-  declarations: [ListProductosComponent, VerProductoComponent, AddProductoComponent, FilterPipe],
+  declarations: [ListProductosComponent, VerProductoComponent, AddProductoComponent, FilterPipe, SidenavComponent],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
-
-    
+    AppRoutingModule
   ],
   exports: [
     ListProductosComponent,

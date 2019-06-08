@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { Proveedores } from './proveedores. model';
 import { catchError } from 'rxjs/operators';
 import {ErrorService, HandleError} from '../error.service';
+import { AuthServiceService } from '../autentificacion/auth-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +20,21 @@ export class ProveedoresService {
   url_remove_proveedor = "http://localhost:8080/proveedores/removeProveedor";
   url_update_proveedor = "http://localhost:8080/proveedores/updateProveedor";
 
-  constructor(private http: HttpClient, private httpErrorHandler: ErrorService) {
+  constructor(private http: HttpClient, private httpErrorHandler: ErrorService, private authService: AuthServiceService) {
     this.handlerError = httpErrorHandler.createHandleError('CategoriasService');
    }
 
+   private addAuthorizationHeader(){
+    let token = this.authService.token;
+    if(token != null){
+      return this.httpHeaders.append('Authorization', 'Bearer ' + token);
+    }
+    return this.httpHeaders;
+  }
+
    //OBTENER TODAS LOS PROVEEDORES
   getProveedores(): Observable<Proveedores[]> {
-    return this.http.get<Proveedores[]>(this.url_list_proveedores)
+    return this.http.get<Proveedores[]>(this.url_list_proveedores, {headers: this.addAuthorizationHeader()})
       .pipe(
         catchError(this.handlerError('getProveedores', []))
         
@@ -34,7 +43,7 @@ export class ProveedoresService {
 
    //OBTIENE UN PROVEEDOR
    getProveedorById(id: string): Observable<any> {
-    return this.http.get<any>(this.url_getOne_proveedor + '/' + id)
+    return this.http.get<any>(this.url_getOne_proveedor + '/' + id, {headers: this.addAuthorizationHeader()})
       .pipe(
           catchError(e => {
             console.error(e.error.info);
@@ -46,7 +55,7 @@ export class ProveedoresService {
 
   //GUARDA UN PROVEEDOR
   addProveedor(proveedor: Proveedores): Observable<any> {
-    return this.http.post<any>(this.url_add_proveedor, proveedor, {headers: this.httpHeaders})
+    return this.http.post<any>(this.url_add_proveedor, proveedor, {headers: this.addAuthorizationHeader()})
       .pipe(
         catchError(e => {
           console.error(e.error.info);
@@ -58,7 +67,7 @@ export class ProveedoresService {
 
   //BORRA UN PROVEEDOR
   removeProveedor(id: number): Observable<any> {
-    return this.http.delete<any>(this.url_remove_proveedor + '/' + id, {headers: this.httpHeaders})
+    return this.http.delete<any>(this.url_remove_proveedor + '/' + id, {headers: this.addAuthorizationHeader()})
       .pipe(
         catchError(e => {
           console.error(e.error.info);
@@ -70,7 +79,7 @@ export class ProveedoresService {
 
   //ACTUALIZA UN PROVEEDOR
   updateProveedor(id: number, proveedor: Proveedores): Observable<any> {
-    return this.http.put<any>(this.url_update_proveedor + '/' + id, proveedor, {headers: this.httpHeaders})
+    return this.http.put<any>(this.url_update_proveedor + '/' + id, proveedor, {headers: this.addAuthorizationHeader()})
       .pipe(
         catchError(e =>{
           console.error(e.error.info);

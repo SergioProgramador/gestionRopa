@@ -1,90 +1,97 @@
-<div *ngIf="cliente">
-    <div class="row">
-        <h2 class="titulo">Datos del cliente {{cliente.nombre}}</h2>   
-    </div>
-    <hr/>
-    <div class="bloque1">  
+<div class="row">
+  <div class="col-md-3">
+    <app-sidenav></app-sidenav>
+  </div>
+  <div class="col-md-9">
+    <div *ngIf="cliente">
         <div class="row">
-          <div class="col-md-3">
-            <p><b>NOMBRE:</b> {{cliente.nombre}}</p>
-          </div>
-          <div class="col-md-3">
-            <p><b>APELLIDOS:</b> {{cliente.apellidos}}</p>
-          </div>
-          <div class="col-md-3">
-            <p><b>CIUDAD:</b> {{cliente.ciudad}}</p>
-          </div>
-        </div> 
-        <div class="row">
-          <div class="col-md-3">
-            <p><b>DIRECCIÓN:</b> {{cliente.direccion}}</p>
-          </div>
-          <div class="col-md-3">
-            <p><b>CODIGO POSTAL:</b> {{cliente.codigo_postal}}</p>
-          </div>
-          <div class="col-md-3">
-            <p><b>EMAIL:</b> {{cliente.email}}</p>
-          </div>
-        </div> 
-        <div class="row">
-          <div class="col-md-3">
-            <p><b>MÓVIL:</b> {{cliente.movil}}</p>
-          </div>
-          <div class="col-md-3">
-            <p><b>SEXO:</b> {{cliente.sexo}}</p>
-          </div>
-          <div class="col-md-3">
-            <p><b>FECHA DE ALTA:</b> {{cliente.create_time | date:'dd-MM-yyyy'}}</p>
-          </div>
-        </div>    
-             
-    </div>
-    <div class="row">
-      <h2 class="titulo2">Facturas</h2>   
-    </div>    
-    <hr/> 
-    <div class="bloque2">
-      <div class="row">
-        <button type="button" class="btn btn-outline-info btn-sm" (click)="goAddFactura(cliente.id)">Crear Factura</button>
-      </div>
-      <div class="row">
-        <div class="alert alert-danger my-4" *ngIf="cliente.facturas.length==0">
-          El cliente {{cliente.nombre}} {{cliente.apellidos}} no tiene facturas!
+            <h2 class="titulo">Datos del cliente {{cliente.nombre}}</h2>   
         </div>
-        <table class="table table-bordered table-striped my-4" *ngIf="cliente.facturas.length>0">
-          <thead>
-            <th>Más info.</th>
-            <th>Nº Factura</th>
-            <th>Titulo</th>
-            <th>Descripción</th>
-            <th>Fecha de vencimiento</th>            
-            <th>Acción</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let fac of cliente.facturas">
-              <td>
-                <button type="button" class="btn btn-outline-info btn-sm"
-                (click)="goDetalleFactura(fac.id)">Ver más</button>
-              </td>
-              <td>{{fac.id}}</td>
-              <td>{{fac.titulo}}</td>
-              <td>{{fac.descripcion}}</td>
-              <td>{{fac.fecha_vencimiento | date: 'dd - MM - yyyy'}}</td>              
-              <td>
-                <button type="button" class="btn btn-outline-info btn1"  data-toggle="modal" data-target="#modalEditar"> 
-                  <a>
-                      <i class="material-icons" style="margin-right: 4%">edit</i>
-                  </a>
-                </button>
-                <button type="button" class="btn btn-outline-info btn2" (click)="delete(fac)">
-                  <a >
-                      <i class="material-icons">delete_outline</i>           
-                  </a>
-                </button>
-              </td>
-            </tr>              
-          </tbody>
-        </table>
-      </div>
+        <hr/>
+        <div class="bloque1">  
+            <div class="row">
+              <div class="col-md-3">
+                <p><b>NOMBRE:</b> {{cliente.nombre}}</p>
+              </div>
+              <div class="col-md-3">
+                <p><b>APELLIDOS:</b> {{cliente.apellidos}}</p>
+              </div>
+              <div class="col-md-3">
+                <p><b>CIUDAD:</b> {{cliente.ciudad}}</p>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-md-3">
+                <p><b>DIRECCIÓN:</b> {{cliente.direccion}}</p>
+              </div>
+              <div class="col-md-3">
+                <p><b>CODIGO POSTAL:</b> {{cliente.codigo_postal}}</p>
+              </div>
+              <div class="col-md-3">
+                <p><b>EMAIL:</b> {{cliente.email}}</p>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-md-3">
+                <p><b>MÓVIL:</b> {{cliente.movil}}</p>
+              </div>
+              <div class="col-md-3">
+                <p><b>SEXO:</b> {{cliente.sexo}}</p>
+              </div>
+              <div class="col-md-3">
+                <p><b>FECHA DE ALTA:</b> {{cliente.create_time | date:'dd-MM-yyyy'}}</p>
+              </div>
+            </div>    
+                
+        </div>
+        <div class="row">
+          <h2 class="titulo2">Facturas</h2>   
+        </div>    
+        <hr/> 
+        <div class="bloque2">
+          <div class="row">
+            <button type="button" class="btn btn-outline-info btn-sm" (click)="goAddFactura(cliente.id)">Crear Factura</button>
+          </div>
+          <div class="row">
+            <div class="alert alert-danger my-4" *ngIf="cliente.facturas.length==0">
+              El cliente {{cliente.nombre}} {{cliente.apellidos}} no tiene facturas!
+            </div>
+            <table class="table table-bordered table-striped my-4" *ngIf="cliente.facturas.length>0">
+              <thead>
+                <th>Más info.</th>
+                <th>Nº Factura</th>
+                <th>Titulo</th>
+                <th>Descripción</th>
+                <th>Fecha de vencimiento</th>            
+                <th>Acción</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let fac of cliente.facturas">
+                  <td>
+                    <button type="button" class="btn btn-outline-info btn-sm"
+                    (click)="goDetalleFactura(fac.id)">Ver más</button>
+                  </td>
+                  <td>{{fac.id}}</td>
+                  <td>{{fac.titulo}}</td>
+                  <td>{{fac.descripcion}}</td>
+                  <td>{{fac.fecha_vencimiento | date: 'dd - MM - yyyy'}}</td>              
+                  <td>
+                    <button type="button" class="btn btn-outline-info btn1"  data-toggle="modal" data-target="#modalEditar"> 
+                      <a>
+                          <i class="material-icons" style="margin-right: 4%">edit</i>
+                      </a>
+                    </button>
+                    <button type="button" class="btn btn-outline-info btn2" (click)="delete(fac)">
+                      <a >
+                          <i class="material-icons">delete_outline</i>           
+                      </a>
+                    </button>
+                  </td>
+                </tr>              
+              </tbody>
+            </table>
+          </div>
+        </div>
     </div>
+  </div>
 </div>

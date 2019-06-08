@@ -10,6 +10,7 @@ import { AddFacturaComponent } from './facturas/add-factura/add-factura.componen
 import { ListProductosComponent } from './productos/list-productos/list-productos.component';
 import { VerProductoComponent } from './productos/ver-producto/ver-producto.component';
 import { AddProductoComponent } from './productos/add-producto/add-producto.component';
+import { LoginComponent } from './autentificacion/login/login.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'productos/showproductos', component: ListProductosComponent},
   {path: 'productos/ver/:id', component: VerProductoComponent},
   {path: 'productos/addProducto', component: AddProductoComponent},
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
