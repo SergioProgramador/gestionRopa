@@ -1,9 +1,10 @@
-<div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+<div class="abrir-modal" *ngIf="modalService.modal">
+<div class="modal"  tabindex="-1" role="dialog" style="display: block">
+    <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Proveedor</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h5 class="modal-title">Agregar Proveedor</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -48,7 +49,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <button class="btn btn-info btn-sm" type="submit" style="float: right;">Añadir Proveedor</button>
-                  <button class="btn btn-light btn-sm" data-dismiss="modal">Cancelar</button>
+                  <button class="btn btn-light btn-sm" data-dismiss="modal" (click)="cerrarModal()">Cancelar</button>
                 </div>
               </div>  
             </form>
@@ -56,5 +57,6 @@
       </div>
     </div>
   </div>
+</div>
 
 

@@ -1,7 +1,7 @@
 import { Proveedores } from '../proveedores/proveedores. model';
 import { Categoria } from '../categorias/categoria';
 
-export interface Producto {
+export class Producto {
     id:number;
     nombre: string;
     descripcion: string;

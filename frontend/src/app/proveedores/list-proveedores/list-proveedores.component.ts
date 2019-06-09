@@ -30,10 +30,6 @@ export class ListProveedoresComponent implements OnInit {
       })
   }
 
-  addProveedor(): void{
-    
-  }
-
   delete(proveedor: Proveedores): void{
     swal.fire({
       title: '¿Estás seguro?',
@@ -66,8 +62,12 @@ export class ListProveedoresComponent implements OnInit {
     })
   }
 
-  abrirModal(proveedor: Proveedores){
+  abrirModal2(proveedor: Proveedores){
     this.proveedorSeleccionado = proveedor;
+    this.modalService.openModal2();
+  }
+
+  abrirModal(){
     this.modalService.openModal();
   }
 

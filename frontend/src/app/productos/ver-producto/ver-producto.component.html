@@ -24,7 +24,7 @@
                     <li class="list-group-item"><b>Stock: </b>{{producto.stock}}</li>
                   </ul>
 
-                  <div class="input-group mb-4" *ngIf="!producto?.imagen">
+                  <div class="input-group mb-4">
                     <div class="custom-file">
                       <input type="file" (change)="seleccionarImg($event)" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
                       <label class="custom-file-label" for="inputGroupFile04">Elige la imagen</label>
@@ -35,10 +35,10 @@
                   </div>
 
                   <button class="btn btn-light btn-sm" type="button" (click)="gotoProductos()">Volver</button>
-                  <button class="btn btn-outline-danger btn-sm float-right" type="button" (click)="delete(producto)">Eliminar</button>
+                  <button *ngIf="authService.hasRole('ROLE_ADMIN') " class="btn btn-outline-danger btn-sm float-right" type="button" (click)="delete(producto)">Eliminar</button>
                 </div>
                 <div class="col-sm"> 
-                  <img *ngIf="producto?.imagen" src="http://localhost:8080/productos//uploadImagen/{{producto.imagen}}" alt="{{producto.imagen}}" width="500cm;" height="650cm;" class="img-thumbnail rounded">
+                  <img *ngIf="producto?.imagen" src="http://localhost:8080/productos/uploadImagen/{{producto.imagen}}" alt="{{producto.imagen}}" width="500cm;" height="650cm;" class="img-thumbnail rounded">
                 </div>
               </div>
             </div>

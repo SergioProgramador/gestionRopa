@@ -39,14 +39,7 @@
     		<groupId>mysql</groupId>
     		<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-	
-    	<dependency>
-    		<groupId>net.sf.dozer</groupId>
-    		<artifactId>dozer</artifactId>
-    		<version>5.5.1</version>
-    	</dependency>
-    	
-		
+    			
 		<!-- https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2 -->
 		<dependency>
 		    <groupId>org.springframework.security.oauth</groupId>

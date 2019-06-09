@@ -18,7 +18,7 @@ export class ProductosService {
 
   private handlerError: HandleError;
   url_list_productos = "http://localhost:8080/productos/showproductos";
-  url_getOne_producto = "http://localhost:8080/productos/";
+  url_getOne_producto = "http://localhost:8080/productos";
   url_add_producto = "http://localhost:8080/productos/addProducto";
   url_remove_producto = "http://localhost:8080/productos/removeProducto";
   url_update_producto = "http://localhost:8080/productos/updateProducto";
@@ -53,20 +53,15 @@ export class ProductosService {
 
   //OBTENER TODAS LOS PRODUCTOS
   getProductos(): Observable<Producto[]> {
-    return this.http.get<Producto[]>(this.url_list_productos, {headers: this.addAuthorizationHeader()})
-      .pipe(
-        catchError(this.handlerError('getProductos', []))        
-      );
+    return this.http.get<Producto[]>(this.url_list_productos, {headers: this.httpHeaders});
+      
   }
 
   //OBTIENE UN PRODUCTO
   getProductoById(id: number): Observable<Producto> {
-    return this.http.get<Producto>(this.url_getOne_producto + '/' + id, {headers: this.addAuthorizationHeader()})
+    return this.http.get<Producto>(this.url_getOne_producto + '/' + id, {headers: this.httpHeaders})
       .pipe(
           catchError(e => {
-            if(this.autorizado(e)){
-              return throwError(e);
-            }
             console.error(e.error.info);
             Swal.fire('Error al obtener el producto.', e.error.info, 'error');
             return throwError(e);
@@ -76,7 +71,7 @@ export class ProductosService {
 
   //GUARDA UN PRODUCTO
   addProducto(producto: Producto): Observable<any> {
-    return this.http.post<any>(this.url_add_producto, producto, {headers: this.addAuthorizationHeader()})
+    return this.http.post<any>(this.url_add_producto, producto, {headers: this.httpHeaders})
       .pipe(
         catchError(e => {
           console.error(e.error.info);
@@ -88,7 +83,7 @@ export class ProductosService {
 
   //BORRA UN PRODUCTO
   removeProducto(id: number): Observable<any> {
-    return this.http.delete<any>(this.url_remove_producto + '/' + id, {headers: this.addAuthorizationHeader()})
+    return this.http.delete<any>(this.url_remove_producto + '/' + id, {headers: this.httpHeaders})
       .pipe(
         catchError(e => {
           console.error(e.error.info);
@@ -100,7 +95,7 @@ export class ProductosService {
 
   //ACTUALIZA UN PRODUCTO
   updateProducto(id: number, producto: Producto): Observable<any> {
-    return this.http.put<any>(this.url_update_producto + '/' + id, producto, {headers: this.addAuthorizationHeader()})
+    return this.http.put<any>(this.url_update_producto + '/' + id, producto, {headers: this.httpHeaders})
       .pipe(
         catchError(e =>{
           console.error(e.error.info);
@@ -116,16 +111,8 @@ export class ProductosService {
     let formData = new FormData();
     formData.append("file", file);
     formData.append("id", id);
-
-    let httpHeaders = new HttpHeaders();
-    let token = this.authService.token;
-    if(token != null){
-      httpHeaders = httpHeaders.append('Authorizaation', 'Bearer ' + token);
-    }
-
-    return this.http.post(this.url_uploadImagen, formData,  {
-      reportProgress: true,
-      headers: httpHeaders}).pipe(
+    
+    return this.http.post(this.url_uploadImagen, formData).pipe(
       map((response: any) => response.producto as Producto),
       catchError(e => {
         console.error(e.error.info);
@@ -134,4 +121,5 @@ export class ProductosService {
       })
     );
   }
+
 }

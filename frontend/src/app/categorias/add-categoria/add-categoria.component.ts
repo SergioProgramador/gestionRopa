@@ -27,9 +27,14 @@ export class AddCategoriaComponent implements OnInit {
     this.service.addCategoria(this.categoria).subscribe(
       response => {
         this.modalService.closeModal(),
-        swal.fire('Nueva Categoría', `Categoría ${this.categoria.nombre} añadida correctamente!`, 'success')
+        swal.fire('Nueva Categoría', `Categoría ${this.categoria.nombre} añadida correctamente!`, 'success'),
+        this.router.navigate(['/categorias/showcategorias']);
       }      
     );
+  }
+
+  cerrarModal(){
+    this.modalService.closeModal();
   }
 
   

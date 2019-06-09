@@ -1,0 +1,54 @@
+<div class="abrir-modal" *ngIf="modalService.modal">
+<div class="modal"  tabindex="-1" role="dialog" style="display: block">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Agregar Empleado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="form-group col-md-6">
+                    Nombre de usuario: <input type="text" class="form-control" id="username" [(ngModel)]="empleado.username" name="username" #username="ngModel"/>
+                </div>
+                <div class="form-group col-md-6">
+                    Contraseña: <input type="password" class="form-control" id="password" [(ngModel)]="empleado.password" name="password" #password="ngModel"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                    Nombre: <input type="text" class="form-control" id="nombre" [(ngModel)]="empleado.nombre" name="nombre" #nombre="ngModel"/>
+                </div>
+            
+                <div class="form-group col-md-6">
+                    Apellidos: <input type="text" class="form-control" id="apellidos" [(ngModel)]="empleado.apellidos" name="apellidos" #apellidos="ngModel"/>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="form-group col-md-4">
+                      Dirección: <input type="text" class="form-control" id="direccion" [(ngModel)]="empleado.direccion" name="direccion" #direccion="ngModel"/>
+                  </div>
+              
+                  <div class="form-group col-md-4">
+                      Email: <input type="text" class="form-control" id="email" [(ngModel)]="empleado.email" name="email" #email="ngModel"/>
+                  </div>
+              
+                  <div class="form-group col-md-4">
+                      Telefono: <input type="text" class="form-control" id="telefono" [(ngModel)]="empleado.telefono" name="telefono" #telefono="ngModel"/>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-info btn-sm" type="submit" style="float: right;">Añadir Empleado</button>
+                  <button class="btn btn-light btn-sm" data-dismiss="modal" (click)="cerrarModal()">Cancelar</button>
+                </div>
+              </div>  
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

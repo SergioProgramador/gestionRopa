@@ -1,0 +1,52 @@
+<!-- <app-edit-empleado *ngIf="empleadoSeleccionado" [empleado]="empleadoSeleccionado"></app-edit-empleado> -->
+<app-add-empleado></app-add-empleado>
+<div class="row">
+  <div class="col-md-3">
+    <app-sidenav></app-sidenav>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <h2 class="titulo">Listado de Empleados</h2>
+    </div>
+    <div class="bloque1">  
+        <button type="button" class="btn btn-outline-info btn-sm agregar" (click)="abrirModal()">Agregar</button>  
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nombre de usuario</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Email</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col">Fecha de creación</th>
+            <th scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleado of empleados">
+            <td>{{empleado.username}}</td>
+            <td>{{empleado.nombre}}</td>
+            <td>{{empleado.apellidos}}</td>
+            <td>{{empleado.direccion}}</td>
+            <td>{{empleado.email}}</td>
+            <td>{{empleado.telefono}}</td>
+            <td>{{empleado.create_time | date:'dd - MM - yyyy'}}</td>
+            <td>
+              <!-- <button type="button" class="btn btn-outline-info btn1" (click)="abrirModal2(empleado)" > 
+                <a>
+                    <i class="material-icons" style="margin-right: 4%">edit</i>
+                </a>
+              </button>           -->
+              <button type="button" class="btn btn-outline-info btn2" (click)="delete(empleado)">
+                <a >
+                    <i class="material-icons">delete_outline</i>           
+                </a>
+              </button>          
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

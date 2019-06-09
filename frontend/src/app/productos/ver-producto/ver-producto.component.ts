@@ -3,6 +3,7 @@ import { Producto } from '../producto';
 import { ProductosService } from '../productos.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthServiceService } from 'src/app/autentificacion/auth-service.service';
 
 @Component({
   selector: 'app-ver-producto',
@@ -14,7 +15,7 @@ export class VerProductoComponent implements OnInit {
   producto: Producto;
   private imgSeleccionada: File;
 
-  constructor(private productoService: ProductosService, private activatedRouter: ActivatedRoute, private router: Router) { }
+  constructor(private productoService: ProductosService, private activatedRouter: ActivatedRoute, private router: Router, private authService: AuthServiceService) { }
 
   ngOnInit() {
     this.activatedRouter.paramMap.subscribe(params =>{
@@ -44,7 +45,7 @@ export class VerProductoComponent implements OnInit {
           this.producto = producto;
           this.productoService.verificarSubida.emit(this.producto);
           this.router.navigate(['/productos/showproductos']);
-          Swal.fire('La imagen se ha subido correctamente!', `La foto se ha subido con éxito: ${this.producto.imagen}`, 'success');          
+          Swal.fire('La imagen se ha subido correctamente!', `La foto se ha subido con éxito`, 'success');          
         }
       );
     } 

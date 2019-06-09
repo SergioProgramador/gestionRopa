@@ -26,7 +26,9 @@ export class ListCategoriasComponent implements OnInit {
     this.service.getCategorias().subscribe(
       categorias => {
         this.categorias = categorias;
+        
       });
+
   }
 
   delete(categoria: Categoria): void{
@@ -61,8 +63,12 @@ export class ListCategoriasComponent implements OnInit {
     })
   }
 
-  abrirModal(categoria: Categoria){
+  openModal2(categoria: Categoria){
     this.categoriaSeleccionada = categoria;
+    this.modalService.openModal2();
+  }
+
+  openModal(){
     this.modalService.openModal();
   }
 

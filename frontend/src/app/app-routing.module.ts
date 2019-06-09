@@ -11,11 +11,13 @@ import { ListProductosComponent } from './productos/list-productos/list-producto
 import { VerProductoComponent } from './productos/ver-producto/ver-producto.component';
 import { AddProductoComponent } from './productos/add-producto/add-producto.component';
 import { LoginComponent } from './autentificacion/login/login.component';
+import { ListEmpleadosComponent } from './empleados/list-empleados/list-empleados.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'categorias/showcategorias', component: ListCategoriasComponent},  
+  {path: 'categorias/showcategorias', component: ListCategoriasComponent}, 
+  {path: 'empleados/showempleados', component: ListEmpleadosComponent}, 
   {path: 'proveedores/showproveedores', component: ListProveedoresComponent},
   {path: 'clientes/showclientes', component: ListClientesComponent},
   {path: 'clientes/ver/:id', component: VerClienteComponent},

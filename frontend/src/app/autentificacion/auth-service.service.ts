@@ -28,7 +28,7 @@ export class AuthServiceService {
     if(this._token != null){
       return this._token;
     }else if(this._token == null && sessionStorage.getItem('token') != null){
-      this._token = sessionStorage.getItem('token') ;
+      this._token = sessionStorage.getItem('token');
       return this._token;
     }
     return null;
@@ -81,5 +81,13 @@ export class AuthServiceService {
       return true;
     }
     return false;
+  }
+
+  hasRole(role: string): boolean{
+    if(this.empleado.roles.includes(role)){
+      return true;
+    }
+    return false;
+
   }
 }

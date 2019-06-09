@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CategoriasService } from '../categorias.service';
 import { Router } from '@angular/router';
 import { Categoria } from '../categoria';
@@ -28,10 +27,15 @@ export class EditCategoriaComponent implements OnInit {
   update() {
     this.service.updateCategoria(this.categoria.id, this.categoria).subscribe(
       update_categoria => {
+        this.modalService.closeModal2(),
         swal.fire('Categoría Editada', `Categoría ${update_categoria.categoria.nombre} se ha editado correctamente!`, 'success');
       },
       error => this.errorMessage = <any>error
     );
+  }
+
+  cerrarModal(){
+    this.modalService.closeModal2();
   }
 
 }

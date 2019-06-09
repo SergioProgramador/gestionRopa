@@ -24,9 +24,17 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 	
 		http
-		.authorizeRequests().antMatchers(HttpMethod.GET, "/productos/showproductos").permitAll()
-		//.anyRequest().authenticated()
-		.and().cors().configurationSource(corsConfigurationSource());
+		.authorizeRequests()
+		//.antMatchers(HttpMethod.GET, "/productos/showproductos", "productos/uploadImagen/**", "/multimedia/**")
+		.anyRequest()
+		.permitAll()
+//		.antMatchers(HttpMethod.GET, "/productos/{id}").hasRole("ADMIN")
+//		.antMatchers(HttpMethod.POST, "/productos/uploadImagen").hasRole("ADMIN")
+//		.antMatchers(HttpMethod.POST, "/productos/addProducto").hasRole("ADMIN")
+//		.antMatchers("/productos/**").hasRole("ADMIN")
+//		.anyRequest().authenticated()
+		.and()
+		.cors().configurationSource(corsConfigurationSource());
 	}
 	
 	@Bean

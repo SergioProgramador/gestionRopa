@@ -9,5 +9,7 @@ import com.finalproject.backend.entity.Roles;
 
 @Repository("rolesRepository")
 public interface RolesRepository extends JpaRepository<Roles, Serializable>{
+	
+	public abstract Roles findByRole(String role);
 
 }

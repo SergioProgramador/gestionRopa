@@ -1,5 +1,5 @@
 <app-add-categoria></app-add-categoria>
-<app-edit-categoria *ngIf="categoriaSeleccionada" [categoria] = "categoriaSeleccionada"></app-edit-categoria>
+<app-edit-categoria *ngIf="categoriaSeleccionada" [categoria] ="categoriaSeleccionada"></app-edit-categoria>
 <div class="row">
   <div class="col-md-3">
     <app-sidenav></app-sidenav>
@@ -9,7 +9,7 @@
         <h2 class="titulo">Listado de Categorías</h2>
     </div>
     <div class="bloque1">  
-        <button type="button" class="btn btn-outline-info btn-sm agregar" data-toggle="modal" data-target="#modal">Agregar</button>  
+        <button (click)="openModal()" type="button" class="btn btn-outline-info btn-sm agregar">Agregar</button>  
         <table class="table table-striped">
         <thead>
           <tr>
@@ -21,7 +21,7 @@
           <tr *ngFor="let cat of categorias">
             <td>{{cat.nombre}}</td>
             <td>
-              <button type="button" class="btn btn-outline-info btn1" (click)="abrirModal(cat)" data-toggle="modal" data-target="#modalEditar">
+              <button type="button" class="btn btn-outline-info btn1" (click)="openModal2(cat)" >
                 <a>
                     <i class="material-icons" style="margin-right: 4%">edit</i>
                 </a>

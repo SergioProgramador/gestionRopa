@@ -7,6 +7,7 @@ export class ModalService {
 
   private _notificarUpload = new EventEmitter<any>();
   modal: boolean = false;
+  modal2 : boolean = false;
 
   constructor() { }
 
@@ -20,6 +21,13 @@ export class ModalService {
 
   closeModal(){
     this.modal = false;
+  }
+
+  openModal2(){
+    this.modal2 = true;
+  }
+  closeModal2(){
+    this.modal2 = false;
   }
 
 }

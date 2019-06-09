@@ -1,41 +1,25 @@
-<!-- <h1 mat-dialog-title>Añadir Categoría</h1>
-
-<form (ngSubmit)="onSubmit(categoriaForm.value)" #categoriaForm="ngForm" class="form-horizontal">
-
-    <div class="form-group" hidden="true">
-      <input type="text" hidden="true" class="form-control" id="id" [(ngModel)]="categoria.id" name="id"/>
-    </div>
-
-    <div class="form-group">
-        Nombre: <input type="text" class="form-control" id="nombre" [(ngModel)]="categoria.nombre"  name="nombre" #nombre="ngModel"/>
-    </div>
-
-    <button class="btn btn-default" type="submit">Añadir Categoria</button>
-</form>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancelar</button>
-</div> -->
-
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Agregar Categoría</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form (ngSubmit) = "create()">
-          <!-- <div class="form-group" hidden="true">
-            <input type="text" hidden="true" class="form-control" id="id" [(ngModel)]="categoria.id" name="id"/>
-          </div> -->
-          <div class="form-group" style="margin-bottom: 1rem;">
-              Nombre: <input type="text" class="form-control" [(ngModel)]="categoria.nombre" name="nombre"/>
-          </div> 
-          <button type="button" class="btn btn-light btn-sm" data-dismiss="modal">Cancelar</button>
-          <button type="submit" style="float: right" class="btn btn-info btn-sm">Guardar</button>     
-        </form>
+<div class="abrir-modal" *ngIf="modalService.modal">
+  <div class="modal" tabindex="-1" role="dialog" style="display: block">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Agregar Categoría</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()"> 
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit) = "create()">
+            <!-- <div class="form-group" hidden="true">
+              <input type="text" hidden="true" class="form-control" id="id" [(ngModel)]="categoria.id" name="id"/>
+            </div> -->
+            <div class="form-group" style="margin-bottom: 1rem;">
+                Nombre: <input type="text" class="form-control" [(ngModel)]="categoria.nombre" name="nombre"/>
+            </div> 
+            <button type="button" class="btn btn-light btn-sm" data-dismiss="modal" (click)="cerrarModal()">Cancelar</button>
+            <button type="submit" style="float: right" class="btn btn-info btn-sm">Guardar</button>     
+          </form>
+        </div>
       </div>
     </div>
   </div>

@@ -15,8 +15,8 @@ export class ClientesService {
   url_list_clientes = "http://localhost:8080/clientes/showclientes";
   url_getOne_cliente = "http://localhost:8080/clientes";
   url_add_cliente = "http://localhost:8080/clientes/addCliente";
-  url_remove_cliente = "http://localhost:8080/categorias/removeCliente";
-  url_update_cliente = "http://localhost:8080/categorias/updateCliente";
+  url_remove_cliente = "http://localhost:8080/clientes/removeCliente";
+  url_update_cliente = "http://localhost:8080/clientes/updateCliente";
   private httpHeaders = new HttpHeaders({'Content-type': 'application/json'})
 
   constructor(private http: HttpClient, private httpErrorHandler: ErrorService) { 

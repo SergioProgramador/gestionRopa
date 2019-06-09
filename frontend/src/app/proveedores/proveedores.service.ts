@@ -34,16 +34,13 @@ export class ProveedoresService {
 
    //OBTENER TODAS LOS PROVEEDORES
   getProveedores(): Observable<Proveedores[]> {
-    return this.http.get<Proveedores[]>(this.url_list_proveedores, {headers: this.addAuthorizationHeader()})
-      .pipe(
-        catchError(this.handlerError('getProveedores', []))
-        
-      );
+    return this.http.get<Proveedores[]>(this.url_list_proveedores, {headers: this.httpHeaders});
+      
   }
 
    //OBTIENE UN PROVEEDOR
    getProveedorById(id: string): Observable<any> {
-    return this.http.get<any>(this.url_getOne_proveedor + '/' + id, {headers: this.addAuthorizationHeader()})
+    return this.http.get<any>(this.url_getOne_proveedor + '/' + id, {headers: this.httpHeaders})
       .pipe(
           catchError(e => {
             console.error(e.error.info);
@@ -55,7 +52,7 @@ export class ProveedoresService {
 
   //GUARDA UN PROVEEDOR
   addProveedor(proveedor: Proveedores): Observable<any> {
-    return this.http.post<any>(this.url_add_proveedor, proveedor, {headers: this.addAuthorizationHeader()})
+    return this.http.post<any>(this.url_add_proveedor, proveedor, {headers: this.httpHeaders})
       .pipe(
         catchError(e => {
           console.error(e.error.info);
@@ -67,7 +64,7 @@ export class ProveedoresService {
 
   //BORRA UN PROVEEDOR
   removeProveedor(id: number): Observable<any> {
-    return this.http.delete<any>(this.url_remove_proveedor + '/' + id, {headers: this.addAuthorizationHeader()})
+    return this.http.delete<any>(this.url_remove_proveedor + '/' + id, {headers: this.httpHeaders})
       .pipe(
         catchError(e => {
           console.error(e.error.info);
@@ -79,7 +76,7 @@ export class ProveedoresService {
 
   //ACTUALIZA UN PROVEEDOR
   updateProveedor(id: number, proveedor: Proveedores): Observable<any> {
-    return this.http.put<any>(this.url_update_proveedor + '/' + id, proveedor, {headers: this.addAuthorizationHeader()})
+    return this.http.put<any>(this.url_update_proveedor + '/' + id, proveedor, {headers: this.httpHeaders})
       .pipe(
         catchError(e =>{
           console.error(e.error.info);

@@ -33,4 +33,8 @@ export class AddClienteComponent implements OnInit {
     );
   }
 
+  cerrarModal(){
+    this.modalService.closeModal();
+  }
+
 }

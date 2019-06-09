@@ -58,8 +58,12 @@ export class ListClientesComponent implements OnInit {
     })
   }
 
-  abrirModal(cliente: Cliente){
+  abrirModal2(cliente: Cliente){
     this.clienteSeleccionado = cliente;
+    this.modalService.openModal2();
+  }
+
+  abrirModal(){
     this.modalService.openModal();
   }
 
