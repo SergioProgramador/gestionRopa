@@ -15,3 +15,5 @@ INSERT INTO categorias (nombre) VALUES ("Hombre");
 INSERT INTO categorias (nombre) VALUES ("Camisetas");
 INSERT INTO categorias (nombre) VALUES ("Pantalones");
 INSERT INTO categorias (nombre) VALUES ("Zapatos");
+
+INSERT INTO clientes (apellidos, ciudad, codigo_postal, create_time, direccion, email, movil, nombre, sexo, update_time) VALUES ("Guzman Lopez", "San Lucar", "11922", "2019-06-09", "Calle Nueva", "quino@quino.com", "23423232", "Quino", "hombre", "2019-06-09");
