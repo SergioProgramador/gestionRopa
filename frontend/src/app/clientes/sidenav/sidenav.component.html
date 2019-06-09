@@ -22,7 +22,7 @@
             </a>
         </li>
   
-        <li>
+        <li *ngIf="authService.hasRole('ROLE_ADMIN')">
             <a class="estilo" routerLink="/categorias/showcategorias" aria-disabled="false">
                 <span class="mat-button-wrapper">Categorias</span>
             </a>                    
@@ -34,7 +34,7 @@
             </a>
         </li>
 
-        <li>
+        <li *ngIf="authService.hasRole('ROLE_ADMIN')">
             <a class="estilo" routerLink="/empleados/showempleados" aria-disabled="false">
                 <span class="mat-button-wrapper">Empleados</span>
             </a>

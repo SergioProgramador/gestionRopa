@@ -14,7 +14,7 @@ import { ModalService } from 'src/app/modal.service';
 export class ListCategoriasComponent implements OnInit {
 
   errorMessage: string;
-  categorias: Categoria[];
+  public categorias: Categoria[];
 
   categoriaSeleccionada:Categoria;
 
@@ -28,6 +28,15 @@ export class ListCategoriasComponent implements OnInit {
         this.categorias = categorias;
         
       });
+
+      this.modalService.notificarUpload.subscribe(cat =>{
+        this.categorias.map(catOriginal =>{
+          if(cat.id == catOriginal.id){
+            this.categorias.unshift(cat);
+          }
+          return this.categorias;
+        })
+      })
 
   }
 

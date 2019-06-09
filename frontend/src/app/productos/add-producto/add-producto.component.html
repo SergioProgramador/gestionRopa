@@ -37,27 +37,8 @@
           </div>    
           <div class="form-group col-md-4">
               <b>Stock:</b> <input type="number" class="form-control" id="stock" [(ngModel)]="producto.stock" name="stock" #stock="ngModel"/>
-          </div>  
-        
-        <div class="form-group col-md-4">
-          <span><b>Proveedor:</b></span>
-          <select class="custom-select" id="producto.proveedores" [(ngModel)]="producto.proveedores"  name="producto.proveedores" #producto.proveedores="ngModel">          
-            <option *ngFor="let proveedor of proveedores" value="proveedor">{{proveedor.empresa}}</option>
-          </select>
-        </div>    
+          </div>             
       </div>                  
-        
-        <div class="row" *ngIf="categorias">
-          <div class="form-group col-md-6">
-            <span><b>Categorias:</b></span>
-            <select class="custom-select"  id="producto.categorias" [(ngModel)]="producto.categorias" name="categorproducto.categorias" #producto.categorias="ngModel" multiple>          
-              <option *ngFor="let cat of categorias" value="cat.nombre">{{cat.nombre}}</option>
-            </select>
-          </div>
-         
-
-      </div>
-
         <div class="row mt-4 mb-5">
           <div class="col-md-12">
             <button class="btn btn-info btn-sm" type="submit" style="float: right;">Añadir Producto</button>

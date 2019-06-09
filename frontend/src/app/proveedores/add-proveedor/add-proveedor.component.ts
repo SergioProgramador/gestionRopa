@@ -36,6 +36,15 @@ export class AddProveedorComponent implements OnInit {
 
   cerrarModal(){
     this.modalService.closeModal();
+    this.proveedor.empresa=null;
+    this.proveedor.direccion=null;
+    this.proveedor.descripcion=null;
+    this.proveedor.telefono=null;
+    this.proveedor.email=null;
+    this.proveedor.frecuencia=null;
+    this.proveedor.estado_pago=null;
+    this.proveedor.cantidad=null;
+
   }
 
 }

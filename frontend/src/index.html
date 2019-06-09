@@ -27,16 +27,16 @@
       doc.text(20, 80, 'DATOS DE LA FACTURA')
       doc.fromHTML($('#datos').get(0), 20, 80);
 
-      doc.text(35, 190, 'Producto')
-      doc.text(85, 190, 'Precio')
-      doc.text(115, 190, 'Cantidad')
-      doc.text(150, 190, 'Importe')
-      doc.fromHTML($('#tabla').get(0), 20, 185,{
-        'width': 200 
+      doc.text(35, 160, 'Producto')
+      doc.text(85, 160, 'Precio')
+      doc.text(115, 160, 'Cantidad')
+      doc.text(150, 160, 'Importe')
+      doc.fromHTML($('#tabla').get(0), 20, 155,{
+        'width': 10
       });
 
-      doc.text(20, 240, 'TOTAL + IVA:')
-      doc.fromHTML($('#total').get(0), 20, 245);
+      doc.text(20, 275, 'TOTAL + IVA:')
+      doc.fromHTML($('#total').get(0), 20, 280);
       
       doc.save('Factura.pdf')
     }
